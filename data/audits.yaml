@@ -1,0 +1,38 @@
+events:
+  game_ended: 0
+  game_started: 40
+missing_switches:
+  s_left_inlane: 40
+  s_left_outlane: 40
+  s_left_sling: 40
+  s_pop_bumper: 24
+  s_r_outlane: 40
+  s_right_inlane: 40
+  s_right_sling: 40
+  s_shooter_lane: 16
+  s_start: 13
+  s_trough1: 40
+  s_trough2: 40
+  s_trough3: 40
+  s_trough_jam: 40
+player:
+  score:
+    average: 0
+    top: []
+    total: 0
+switches:
+  s_left_flipper: 405
+  s_left_inlane: 0
+  s_left_outlane: 0
+  s_left_sling: 0
+  s_pop_bumper: 0
+  s_r_outlane: 0
+  s_right_flipper: 503
+  s_right_inlane: 0
+  s_right_sling: 0
+  s_shooter_lane: 24
+  s_start: 1
+  s_trough1: 0
+  s_trough2: 0
+  s_trough3: 0
+  s_trough_jam: 0

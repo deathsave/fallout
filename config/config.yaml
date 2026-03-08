@@ -1,0 +1,350 @@
+#config_version=6
+
+#virtual_platform_start_active_switches:
+    #- s_trough1
+    #- s_trough2
+    #- s_trough3
+keyboard:
+    s:
+        switch: s_start
+    k:
+        switch: s_left_flipper
+    l:
+        switch: s_right_flipper
+
+hardware:
+    platform: fast
+
+fast:
+  net:
+    controller: neuron
+    io_loop:
+      3208:
+        model: FP-I/O-3208
+        order: 1
+    port: auto
+    baud: 921600
+    debug: false
+    watchdog: 1s
+    default_quick_debounce_open: 2ms
+    default_quick_debounce_close: 2ms
+    default_normal_debounce_open: 4ms
+    default_normal_debounce_close: 4ms
+light_settings:
+    default_fade_ms: 40
+lights:
+  #CHANGE THIS
+    #shoot_again:
+        #number: 1-0-1-2
+        #platform_settings:
+            #polarity: false
+        #tags: lamps, gi
+
+
+switches:
+    s_left_flipper:
+        number: 3208-0
+        tags: left_flipper
+        type: 'NC'
+        debounce: quick
+    s_right_flipper:
+        number: 3208-1
+        tags: right_flipper
+        type: 'NC'
+        debounce: quick
+    s_trough_jam:
+        number: 3208-3
+        type: NC
+    s_trough1:
+        number: 3208-4
+        type: NC
+    s_trough2:
+        number: 3208-5
+        type: NC
+    s_trough3:
+        number: 3208-6
+        type: NC
+    s_shooter_lane:
+        number: 3208-2
+    s_start:
+        number: 3208-7
+        tags: start
+    s_r_outlane:
+        number: 3208-8
+        tags: playfield_active
+    s_left_outlane:
+        number: 3208-9
+        tags: playfield_active
+    s_left_inlane:
+        number: 3208-10
+        tags: playfield_active
+    s_right_inlane:
+        number: 3208-11
+        tags: playfield_active
+    s_left_sling:
+        number: 3208-12
+    s_right_sling:
+        number: 3208-13
+
+coils:
+    c_flipper_left_main:
+        number: 3208-0
+        allow_enable: true
+        default_pulse_ms: 22
+        default_hold_power: .25
+
+    c_flipper_right_main:
+        number: 3208-1
+        allow_enable: true
+        default_pulse_ms: 22
+        default_hold_power: .25
+
+    c_plunger:
+        number: 3208-2
+        default_pulse_ms: 18
+    c_trough_eject:
+        number: 3208-3
+        default_pulse_ms: 12
+    c_sling_left:
+        number: 3208-4
+        default_pulse_ms: 8
+    c_sling_right:
+        number: 3208-5
+        default_pulse_ms: 8
+
+
+ball_devices:
+    bd_trough:
+        ball_switches: s_trough1, s_trough2, s_trough3, s_trough_jam
+        eject_coil: c_trough_eject
+        eject_targets: bd_plunger
+        eject_timeouts: 3s
+        tags: trough, home, drain
+        jam_switch: s_trough_jam
+        eject_coil_jam_pulse: 15ms
+        debug: true
+    bd_plunger:
+        ball_switches: s_shooter_lane
+        eject_coil: c_plunger
+        mechanical_eject: true
+        eject_timeouts: 3s
+
+autofire_coils:
+    ac_slingshot_left:
+        coil: c_sling_left
+        switch: s_left_sling
+    ac_slingshot_right:
+        coil: c_sling_right
+        switch: s_right_sling
+
+
+playfields:
+    playfield:
+        tags: default
+        default_source_device: bd_plunger
+
+flippers:
+#these flippers are setup for dual-wound coils, computer controlled
+#to switch from high power to hold power automatically when the flipper button
+#is held down --no end of stroke switch required
+    left_flipper:
+        main_coil: c_flipper_left_main
+        activation_switch: s_left_flipper
+    right_flipper:
+        main_coil: c_flipper_right_main
+        activation_switch: s_right_flipper
+
+displays:
+    window:
+        width: 1920
+        height: 1080
+
+sound_system:
+    buffer: 1024
+    channels: 1
+    enabled: true
+    frequency: 44100
+    tracks:
+        music:
+            type: standard
+            simultaneous_sounds: 1
+            volume: 0.5
+        voice:
+            type: standard
+            simultaneous_sounds: 1
+            volume: 0.9
+        sfx:
+            type: standard
+            simultaneous_sounds: 8
+            volume: 0.6
+
+machine_vars:
+    master_volume:
+        initial_value: 0.8
+
+player_vars:
+    pop_bumper_hits:
+        initial_value: 0
+
+modes:
+    - base
+    - bonus
+    - high_score
+
+slides:
+    welcome_slide:
+        widgets:
+            - type: text
+              text: IF YOU SEE THIS, SOMETHING IS WRONG!
+              font_size: 50
+              color: red
+            - type: rectangle
+              width: 240
+              height: 60
+    attract_started:
+        widgets:
+            - type: image
+              image: ADD_ME
+    final_score_slide:
+        widgets:
+            - type: text
+              text: FINAL SCORE
+              font_size: 42
+              color: black
+              y: 900
+              x: 1120
+              anchor_x: left
+              anchor_y: top
+            - type: image
+              image: final_score
+    base_slide:
+        widgets:
+            - type: text
+              text: (player1|score)
+              number_grouping: true
+              min_digits: 2
+              font_size: 45
+              color: black
+              y: 108
+              x: 413
+              anchor_x: right
+              anchor_y: bottom
+            - type: text
+              text: PLAYER (number)
+              y: 365
+              x: 20
+              font_size: 50
+              anchor_x: left
+              anchor_y: bottom
+            - type: text
+              text: BALL (ball)
+              y: 295
+              x: 20
+              anchor_x: left
+              anchor_y: bottom
+              font_size: 50
+            - type: image
+              image: base_background1
+
+
+
+widget_player:
+    player_added{num==2}:
+        player2_scoring:
+            slide: base_slide
+    player_added{num==3}:
+        player3_scoring:
+            slide: base_slide
+    player_added{num==4}:
+        player4_scoring:
+            slide: base_slide
+
+widgets:
+    player2_scoring:
+        - type: text
+          text: (player2|score)
+          number_grouping: true
+          min_digits: 2
+          font_size: 45
+          color: black
+          y: 108
+          x: 875
+          z: 5
+          anchor_x: right
+          anchor_y: bottom
+    player3_scoring:
+        - type: text
+          text: (player3|score)
+          number_grouping: true
+          min_digits: 2
+          font_size: 45
+          color: black
+          y: 108
+          x: 1335
+          z: 5
+          anchor_x: right
+          anchor_y: bottom
+    player4_scoring:
+        - type: text
+          text: (player4|score)
+          number_grouping: true
+          min_digits: 2
+          font_size: 45
+          color: black
+          y: 108
+          x: 1795
+          z: 5
+          anchor_x: right
+          anchor_y: bottom
+
+widget_styles:
+    attract_mode_high_score_display_label:
+        font_size: 40
+        anchor_x: right
+        anchor_y: top
+        x: center-110
+        bold: true
+    attract_mode_high_score_display_name:
+        font_size: 40
+        anchor_x: right
+        anchor_y: top
+        x: center+150
+    attract_mode_high_score_display_score:
+        font_size: 40
+        anchor_x: left
+        anchor_y: top
+        x: center+240
+        number_grouping: true
+        min_digits: 1
+    attract_mode_final_score_display_player_number:
+        font_size: 40
+        anchor_x: center
+        anchor_y: top
+        x: center-80
+        bold: true
+    attract_mode_final_score_display_score:
+        font_size: 40
+        anchor_x: left
+        anchor_y: top
+        x: center+60
+        number_grouping: true
+        min_digits: 1
+
+assets:
+    sounds:
+        default:
+            load: on_demand
+        music:
+            track: music
+        sfx:
+            track: sfx
+        voice:
+            track: voice
+
+
+slide_player:
+    init_done: welcome_slide
+    mode_attract_started: attract_started
+    game_ending:
+        final_score_slide:
+            expire: 30s
