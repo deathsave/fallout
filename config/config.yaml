@@ -1,6 +1,6 @@
 #config_version=6
 
-#virtual_platform_start_active_switches:
+virtual_platform_start_active_switches:
     #- s_trough1
     #- s_trough2
     #- s_trough3
@@ -30,9 +30,80 @@ fast:
     default_quick_debounce_close: 2ms
     default_normal_debounce_open: 4ms
     default_normal_debounce_close: 4ms
+  exp:
+    boards:
+      neuron:
+        model: FP-EXP-2000
+      playfield:
+        model: FP-EXP-0081
+    port: auto
+    baud: 921600
+    debug: False
+kivy_config:
+    kivy:
+        desktop: 1
+        exit_on_escape: true
+        pause_on_minimize: 0
+    graphics:
+        borderless: true
+        window_state: visible # visible, hidden, maximized, minimized
+        fbo: software # hardware, software, force-hardware
+        fullscreen: false
+        left: 0
+        top: 0
+        width: 1366  # width of display1 + display2
+        height: 768 # common height (or the maximum of both)
+        maxfps: 30
+        multisamples: 2
+        position: custom # auto, custom
+        show_cursor: true
+        resizable: false
+        rotation: 0
+
 light_settings:
     default_fade_ms: 40
 lights:
+    rads1:
+        number: playfield-1-1
+        tags: inserts, rads
+    rads2:
+        number: playfield-1-2
+        tags: inserts, rads
+    rads3:
+        number: playfield-1-3
+        tags: inserts, rads
+    rads4:
+        number: playfield-1-4
+        tags: inserts, rads
+    rads5:
+        number: playfield-1-5
+        tags: inserts, rads
+    rads6:
+        number: playfield-1-6
+        tags: inserts, rads
+    rads7:
+        number: playfield-1-7
+        tags: inserts, rads
+    rads8:
+        number: playfield-1-8
+        tags: inserts, rads
+    rads9:
+        number: playfield-1-9
+        tags: inserts, rads
+    rads10:
+        number: playfield-1-10
+        tags: inserts, rads
+    big_rad:
+        number: playfield-1-11
+        tags: inserts, rads
+    cap_right:
+        number: playfield-1-12
+        tags: inserts, caps
+
+light_player:
+    mode_attract_started:
+        rads: red
+        caps: white
   #CHANGE THIS
     #shoot_again:
         #number: 1-0-1-2
@@ -100,16 +171,16 @@ coils:
         default_hold_power: .25
 
     c_plunger:
-        number: 3208-2
+        number: 3208-3
         default_pulse_ms: 18
     c_trough_eject:
-        number: 3208-3
+        number: 3208-4
         default_pulse_ms: 12
     c_sling_left:
-        number: 3208-4
+        number: 3208-5
         default_pulse_ms: 8
     c_sling_right:
-        number: 3208-5
+        number: 3208-2
         default_pulse_ms: 8
 
 
