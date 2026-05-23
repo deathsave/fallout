@@ -5,8 +5,475 @@ mode:
 
 ball_saves:
     ball_start_ball_save:
-        active_time: "+10s"
-        hurry_up_time: 6s
+        active_time: "+6s"
+        hurry_up_time: 2s
         timer_start_events: s_shooter_lane_inactive
         auto_launch: true
         balls_to_save: 1
+
+
+slide_player:
+    mode_base_started: base_slide
+
+light_player:
+    mode_base_started:
+        rads: green
+        meds: off
+        caps: off
+        vlock: off
+        vend: off
+        big_rad: off
+        stims: off
+        shoot_again: off
+
+    rads_level1:
+        rad1: red
+    rads_level2:
+        rad2: red
+    rads_level3:
+        rad3: red
+    rads_level4:
+        rad4: red
+    rads_level5:
+        rad5: red
+    rads_level6:
+        rad6: red
+    rads_level7:
+        rad7: red
+    rads_level8:
+        rad8: red
+    rads_level9:
+        rad9: red
+    rads_level10:
+        rad10: red
+    rads_level0:
+        rads: green
+
+
+variable_player:
+    s_rspinner_active:
+        score: 100
+    s_lspinner_active:
+        score: 100
+    s_cspinner_active:
+        score: 100
+    s_left_ramp_active:
+        score: 1000
+    s_scoop_active:
+        score: 1000
+    s_lock1_active:
+        score: 1000
+    s_stand1_active:
+        score: 500
+    s_stand2_active:
+        score: 500
+    s_stand3_active:
+        score: 500
+    s_left_sling_active:
+        score: 250
+    s_right_sling_active:
+        score: 250
+    rad_spin_hit:
+        score: 100
+#    logic_block_rad_spin_counter_updated:
+#        rad_spin_count:
+#            int: value
+#            action: set
+
+
+shots:
+    rad_spin:
+        switch: s_rspinner
+    med_spin:
+        switch: s_cspinner
+    left_ramp:
+        switch: s_left_ramp
+    center_ramp:
+        switch: s_center_ramp
+    right_ramp:
+        switch: s_right_ramp
+
+sound_player:
+    rad_spin_hit:
+        geiger:
+            action: play
+            track: sfx
+            volume: 10
+    med_spin_hit:
+        water:
+            action: play
+            track: sfx
+            volume: 10
+    left_ramp_hit:
+        left_ramp:
+            action: play
+            track: sfx
+            volume: 10
+    right_ramp_hit:
+        right_ramp:
+            action: play
+            track: sfx
+            volume: 10
+    center_ramp_hit:
+        center_ramp:
+            action: play
+            track: sfx
+            volume: 10
+    stand1_hit:
+        caps:
+            action: play
+            track: sfx
+            volume: 10
+    stand2_hit:
+        caps:
+            action: play
+            track: sfx
+            volume: 10
+    stand3_hit:
+        caps:
+            action: play
+            track: sfx
+            volume: 10
+
+
+counters:
+    rad_spin_counter:
+        count_events: s_rspinner_active
+        starting_count: 0
+        count_interval: 1
+        count_complete_value: 10
+        persist_state: true
+        reset_on_complete: true
+        disable_on_complete: false
+
+    med_spin_counter:
+        count_events: s_cspinner_active
+        starting_count: 0
+        count_interval: 1
+        count_complete_value: 15
+        persist_state: true
+        reset_on_complete: true
+        disable_on_complete: false
+
+multiballs:
+    vault_multiball:
+        ball_count: 3
+        ball_count_type: total
+        shoot_again: 10s
+        start_events: multiball_lock_v_lock_full
+#        replace_balls_in_play: true
+#        balls_to_replace: 2
+
+
+multiball_locks:
+    v_lock:
+        balls_to_lock: 3
+        lock_devices: bd_lock
+        locked_ball_counting_strategy: virtual_only
+        enable_events: enable_lock
+        disable_events: disable_lock
+#        replace_balls_in_play: true
+#        balls_to_replace: 2
+state_machines:
+    rad_meter_status:
+        persist_state: true #so this will hold state across balls
+        starting_state: rads0
+        states:
+            rads0:
+                label: Start state
+                show_when_active:
+                    show: rad_level0_show
+                    show_tokens: None
+            rads1:
+                show_when_active:
+                    show: rad_level1_show
+                    show_tokens: None
+            rads2:
+                show_when_active:
+                    show: rad_level2_show
+                    show_tokens: None
+            rads3:
+                show_when_active:
+                    show: rad_level3_show
+                    show_tokens: None
+            rads4:
+                show_when_active:
+                    show: rad_level4_show
+                    show_tokens: None
+            rads5:
+                show_when_active:
+                    show: rad_level5_show
+                    show_tokens: None
+            rads6:
+                show_when_active:
+                    show: rad_level6_show
+                    show_tokens: None
+            rads7:
+                show_when_active:
+                    show: rad_level7_show
+                    show_tokens: None
+            rads8:
+                show_when_active:
+                    show: rad_level8_show
+                    show_tokens: None
+            rads9:
+                show_when_active:
+                    show: rad_level9_show
+                    show_tokens: None
+            rads10:
+                show_when_active:
+                    show: rad_level10_show
+                    show_tokens: None
+                #etc
+        transitions:
+            - source: rads0
+              target: rads1
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads1
+              target: rads2
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads2
+              target: rads3
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads3
+              target: rads4
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads4
+              target: rads5
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads5
+              target: rads6
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads6
+              target: rads7
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads7
+              target: rads8
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads8
+              target: rads9
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads9
+              target: rads10
+              events: logicblock_rad_spin_sequence_complete
+            - source: rads10
+              target: rads0
+              events: reset_rad_meter
+    med_meter_status:
+        persist_state: true #so this will hold state across balls
+        starting_state: med0
+        states:
+            med0:
+                label: Start state
+                show_when_active:
+                    show: med_level0_show
+                    show_tokens: None
+            med1:
+                show_when_active:
+                    show: med_level1_show
+                    show_tokens: None
+            med2:
+                show_when_active:
+                    show: med_level2_show
+                    show_tokens: None
+            med3:
+                show_when_active:
+                    show: med_level3_show
+                    show_tokens: None
+            med4:
+                show_when_active:
+                    show: med_level4_show
+                    show_tokens: None
+            med5:
+                show_when_active:
+                    show: med_level5_show
+                    show_tokens: None
+        transitions:
+            - source: med0
+              target: med1
+              events: logicblock_med_spin_sequence_complete
+            - source: med1
+              target: med2
+              events: logicblock_med_spin_sequence_complete
+            - source: med2
+              target: med3
+              events: logicblock_med_spin_sequence_complete
+            - source: med3
+              target: med4
+              events: logicblock_med_spin_sequence_complete
+            - source: med4
+              target: med5
+              events: logicblock_med_spin_sequence_complete
+            - source: med5
+              target: med0
+              events: reset_med_meter
+
+#using show_when_active like this means it will automatically set the lights
+#to match the state machine when a new ball starts, without requiring any
+#additional logic or event flags
+
+sequences:
+    rad_spin_sequence:
+        reset_on_complete: true
+        disable_on_complete: false
+        events:  #counts 5 hits of the rad_spin shot (spinner rotatations)/completion
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+            - rad_spin_hit
+    med_spin_sequence:
+        reset_on_complete: true
+        disable_on_complete: false
+        events:
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+            - med_spin_hit
+shows:
+#you can just list these shows out here since they're so simple.
+    rad_level0_show:
+        - time: "+100ms"
+          lights:
+              rads: green
+    rad_level1_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+    rad_level2_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+    rad_level3_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+    rad_level4_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+    rad_level5_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+    rad_level6_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+              rads6: red
+    rad_level7_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+              rads6: red
+              rads7: red
+    rad_level8_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+              rads6: red
+              rads7: red
+              rads8: red
+    rad_level9_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+              rads6: red
+              rads7: red
+              rads8: red
+              rads9: red
+    rad_level10_show:
+        - time: "+100ms"
+          lights:
+              rads1: red
+              rads2: red
+              rads3: red
+              rads4: red
+              rads5: red
+              rads6: red
+              rads7: red
+              rads8: red
+              rads9: red
+              rads10: red
+              big_rad: red
+    rads_level0_show:
+        - time: "+100ms"
+          lights:
+              rads: green
+
+    med_level0_show:
+        - time: "+100ms"
+          lights:
+              meds: off
+    med_level1_show:
+        - time: "+100ms"
+          lights:
+              med1: purple
+    med_level2_show:
+        - time: "+100ms"
+          lights:
+              med1: purple
+              med2: purple
+    med_level3_show:
+        - time: "+100ms"
+          lights:
+              med1: purple
+              med2: purple
+              med3: purple
+    med_level4_show:
+        - time: "+100ms"
+          lights:
+              med1: purple
+              med2: purple
+              med3: purple
+              med4: purple
+    med_level5_show:
+        - time: "+100ms"
+          lights:
+              meds: off
+              stim_right: red
+              stim_left: red
+
+    #etc...

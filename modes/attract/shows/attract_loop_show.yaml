@@ -1,167 +1,139 @@
 #show_version=6
 ##! show: attract_loop_show
-
-    - time: "+1"
-      slides:
-          show_final_scores:
-              widgets:
-              - type: Text
-                text: FINAL SCORES
-                font_size: 80
-                bold: true
-                anchor_x: center
-                anchor_y: center
-                x: center
-                y: top-100
-              - type: Text
-                text: PLAYER 1
-                style: attract_mode_final_score_display_player_number
-                y: top-250
-              - type: Text
-                text: PLAYER 2
-                style: attract_mode_final_score_display_player_number
-                y: top-320
-              - type: Text
-                text: PLAYER 3
-                style: attract_mode_final_score_display_player_number
-                y: top-390
-              - type: Text
-                text: PLAYER 4
-                style: attract_mode_final_score_display_player_number
-                y: top-460
-              - type: Text
-                text: (machine|player1_score)
-                style: attract_mode_final_score_display_score
-                y: top-250
-              - type: Text
-                text: (machine|player2_score)
-                style: attract_mode_final_score_display_score
-                y: top-320
-              - type: Text
-                text: (machine|player3_score)
-                style: attract_mode_final_score_display_score
-                y: top-390
-              - type: Text
-                text: (machine|player4_score)
-                style: attract_mode_final_score_display_score
-                y: top-460
-    - time: "+10"
-      slides:
-          show_high_scores:
-              widgets:
-              - type: Text
-                text: HIGH SCORES
-                font_size: 80
-                bold: true
-                anchor_x: center
-                anchor_y: center
-                x: center
-                y: top-100
-              - type: Text
-                text: (machine|score1_label)
-                style: attract_mode_high_score_display_label
-                y: top-250
-              - type: Text
-                text: (machine|score1_name)
-                style: attract_mode_high_score_display_name
-                y: top-250
-              - type: Text
-                text: (machine|score1_value)
-                style: attract_mode_high_score_display_score
-                y: top-250
-              - type: Text
-                text: (machine|score2_label)
-                style: attract_mode_high_score_display_label
-                y: top-330
-              - type: Text
-                text: (machine|score2_name)
-                style: attract_mode_high_score_display_name
-                y: top-330
-              - type: Text
-                text: (machine|score2_value)
-                style: attract_mode_high_score_display_score
-                y: top-330
-              - type: Text
-                text: (machine|score3_label)
-                style: attract_mode_high_score_display_label
-                y: top-380
-              - type: Text
-                text: (machine|score3_name)
-                style: attract_mode_high_score_display_name
-                y: top-380
-              - type: Text
-                text: (machine|score3_value)
-                style: attract_mode_high_score_display_score
-                y: top-380
-              - type: Text
-                text: (machine|score4_label)
-                style: attract_mode_high_score_display_label
-                y: top-430
-              - type: Text
-                text: (machine|score4_name)
-                style: attract_mode_high_score_display_name
-                y: top-430
-              - type: Text
-                text: (machine|score4_value)
-                style: attract_mode_high_score_display_score
-                y: top-430
-              - type: Text
-                text: (machine|score5_label)
-                style: attract_mode_high_score_display_label
-                y: top-480
-              - type: Text
-                text: (machine|score5_name)
-                style: attract_mode_high_score_display_name
-                y: top-480
-              - type: Text
-                text: (machine|score5_value)
-                style: attract_mode_high_score_display_score
-                y: top-480
-              - type: Text
-                text: (machine|score6_label)
-                style: attract_mode_high_score_display_label
-                y: top-530
-              - type: Text
-                text: (machine|score6_name)
-                style: attract_mode_high_score_display_name
-                y: top-530
-              - type: Text
-                text: (machine|score6_value)
-                style: attract_mode_high_score_display_score
-                y: top-530
-              - type: Text
-                text: (machine|score7_label)
-                style: attract_mode_high_score_display_label
-                y: top-580
-              - type: Text
-                text: (machine|score7_name)
-                style: attract_mode_high_score_display_name
-                y: top-580
-              - type: Text
-                text: (machine|score7_value)
-                style: attract_mode_high_score_display_score
-                y: top-580
-              - type: Text
-                text: (machine|score8_label)
-                style: attract_mode_high_score_display_label
-                y: top-630
-              - type: Text
-                text: (machine|score8_name)
-                style: attract_mode_high_score_display_name
-                y: top-630
-              - type: Text
-                text: (machine|score8_value)
-                style: attract_mode_high_score_display_score
-                y: top-630
-              - type: Text
-                text: (machine|score9_label)
-                style: attract_mode_high_score_display_label
-                y: top-680
-              - type: Text
-                text: (machine|score9_name)
-                style: attract_mode_high_score_display_name
-                y: top-680
-              - type: Text
-                text: (machine|score9_value)
-                style: attract_mode_high_score_display_score
-                y: top-680
+    - time: "+3"
+      lights:
+          rads: off
+    - time: "+3"
+      lights:
+          rad1: off
+          med1: off
+    - time: "+3"
+      lights:
+          rad2: off
+          med2: off
+    - time: "+3"
+      lights:
+          rad3: off
+          med3: off
+    - time: "+3"
+      lights:
+          rad4: off
+          med4: off
+    - time: "+3"
+      lights:
+          rad5: off
+    - time: "+3"
+      lights:
+          rad6: off
+    - time: "+3"
+      lights:
+          rad7: off
+    - time: "+3"
+      lights:
+          rad8: off
+          vlock1: off
+    - time: "+3"
+      lights:
+          rad9: off
+          vlock2: off
+    - time: "+3"
+      lights:
+          rad10: off
+          vlock3: off
+    - time: "+3"
+      lights:
+          caps: off
+          shoot_again: off
+          meds: off
+          big_rad: off
+          stims: off
+          vend: off
+          vlock1: off
+          vlock2: off
+          vlock3: off
+    - time: "+3"
+      lights:
+          rads: orange red
+    - time: "+3"
+      lights:
+          rad1: green
+          med1: purple
+    - time: "+3"
+      lights:
+          rad2: green
+          med2: purple
+    - time: "+3"
+      lights:
+          rad3: green
+          med3: purple
+    - time: "+3"
+      lights:
+          rad4: green
+          med4: purple
+    - time: "+3"
+      lights:
+          rad5: green
+    - time: "+3"
+      lights:
+          rad6: green
+    - time: "+3"
+      lights:
+          rad7: green
+    - time: "+3"
+      lights:
+          rad8: green
+    - time: "+3"
+      lights:
+          rad9: green
+    - time: "+3"
+      lights:
+          rad10: green
+    - time: "+3"
+      lights:
+          caps: white
+          shoot_again: lime
+          meds: purple
+          big_rad: red
+          stims: red
+          vend: sandy brown
+          vlock1: red
+          vlock2: ffff00
+          vlock3: lime
+    - time: "+3"
+      lights:
+          rads: off
+          caps: off
+          shoot_again: off
+          meds: off
+          big_rad: off
+          stims: off
+          vend: off
+          vlock1: off
+          vlock2: off
+          vlock3: off
+    - time: "+2"
+      lights:
+          rads: orange red
+    - time: "+2"
+      lights:
+          caps: white
+    - time: "+2"
+      lights:
+          shoot_again: lime
+    - time: "+2"
+      lights:
+          meds: purple
+    - time: "+2"
+      lights:
+          big_rad: red
+    - time: "+2"
+      lights:
+          stims: red
+    - time: "+2"
+      lights:
+          vend: sandy brown
+    - time: "+2"
+      lights:
+          vlock1: red
+          vlock2: ffff00
+          vlock3: lime
