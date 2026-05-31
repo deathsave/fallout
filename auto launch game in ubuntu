@@ -1,0 +1,10 @@
+In startup applications: create new
+Name: (your game name)
+Command: gnome-terminal 
+Comments: whatever you want
+save
+
+run in terminal: nano ~/.bashrc
+scroll all the way to the bottom
+new line: cd (folder name)
+new line: mpf both
