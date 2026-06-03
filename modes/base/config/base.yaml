@@ -5,7 +5,7 @@ mode:
 
 ball_saves:
     ball_start_ball_save:
-        active_time: "+6s"
+        active_time: "+10s"
         hurry_up_time: 2s
         timer_start_events: s_shooter_lane_inactive
         auto_launch: true
@@ -16,6 +16,10 @@ slide_player:
     mode_base_started: base_slide
 
 light_player:
+    ball_save_ball_start_ball_save_timer_start:
+        shoot_again: lime
+    ball_save_ball_start_ball_save_disabled:
+        shoot_again: off
     mode_base_started:
         rads: green
         meds: off
@@ -24,7 +28,9 @@ light_player:
         vend: off
         big_rad: off
         stims: off
-        shoot_again: off
+        helmet: ffff00
+        vault_boy: off
+        slings: off
 
     rads_level1:
         rad1: red
@@ -63,77 +69,133 @@ variable_player:
         score: 1000
     s_lock1_active:
         score: 1000
-    s_stand1_active:
+    s_stand_up1_active:
         score: 500
-    s_stand2_active:
+    s_stand_up2_active:
         score: 500
-    s_stand3_active:
+    s_stand_up3_active:
         score: 500
     s_left_sling_active:
         score: 250
     s_right_sling_active:
         score: 250
-    rad_spin_hit:
-        score: 100
-#    logic_block_rad_spin_counter_updated:
-#        rad_spin_count:
-#            int: value
-#            action: set
-
+    s_l_stand_active:
+        score: 500
 
 shots:
     rad_spin:
         switch: s_rspinner
     med_spin:
-        switch: s_cspinner
+        switch: s_lspinner
     left_ramp:
         switch: s_left_ramp
     center_ramp:
         switch: s_center_ramp
     right_ramp:
         switch: s_right_ramp
-
+    stand_up1:
+        switch: s_stand_up1
+    stand_up2:
+        switch: s_stand_up2
+    stand_up3:
+        switch: s_stand_up3
+    right_sling:
+        switch: s_right_sling
+    left_sling:
+        switch: s_left_sling
+    lock1:
+        switch: s_lock1
+    lock2:
+        switch: s_lock2
+    lock3:
+        switch: s_lock3
+    gun_spin:
+        switch: s_cspinner
+    l_stand:
+        switch: s_l_stand
 sound_player:
     rad_spin_hit:
         geiger:
             action: play
             track: sfx
-            volume: 10
+            volume: 1
     med_spin_hit:
         water:
             action: play
             track: sfx
-            volume: 10
+            volume: 1
     left_ramp_hit:
         left_ramp:
             action: play
             track: sfx
-            volume: 10
+            volume: 1
     right_ramp_hit:
         right_ramp:
             action: play
             track: sfx
-            volume: 10
+            volume: 1
     center_ramp_hit:
-        center_ramp:
+        objective:
             action: play
             track: sfx
-            volume: 10
-    stand1_hit:
+            volume: 1
+    stand_up1_hit:
         caps:
             action: play
             track: sfx
-            volume: 10
-    stand2_hit:
+            volume: 1
+    stand_up2_hit:
         caps:
             action: play
             track: sfx
-            volume: 10
-    stand3_hit:
+            volume: 1
+    stand_up3_hit:
         caps:
             action: play
             track: sfx
-            volume: 10
+            volume: 1
+    right_sling_hit:
+        blaster:
+            action: play
+            track: sfx
+            volume: 1
+    left_sling_hit:
+        blaster:
+            action: play
+            track: sfx
+            volume: 1
+    lock1_hit:
+        vault_door:
+            action: play
+            track: sfx
+            volume: 1
+    lock2_hit:
+        vault_door:
+            action: play
+            track: sfx
+            volume: 1
+    lock3_hit:
+        vault_door:
+            action: play
+            track: sfx
+            volume: 1
+    gun_spin_hit:
+        gat:
+            action: play
+            track: sfx
+            volume: 1
+    l_stand_hit:
+        bark:
+            action: play
+            track: sfx
+            volume: 1
+    mode_base_started:
+        base_start:
+            action: play
+    mode_base_stopped:
+        base_end:
+            action: play
+
 
 
 counters:
@@ -147,6 +209,15 @@ counters:
         disable_on_complete: false
 
     med_spin_counter:
+        count_events: s_lspinner_active
+        starting_count: 0
+        count_interval: 1
+        count_complete_value: 15
+        persist_state: true
+        reset_on_complete: true
+        disable_on_complete: false
+
+    gun_spin_counter:
         count_events: s_cspinner_active
         starting_count: 0
         count_interval: 1
@@ -161,6 +232,12 @@ multiballs:
         ball_count_type: total
         shoot_again: 10s
         start_events: multiball_lock_v_lock_full
+#    release_all_locked_balls:
+#        ball_count: current_player.lock_mb6_locked_balls
+#        ball_count_type: add
+#        shoot_again: 20s
+#        start_events: multiball_lock_v_lock_full
+#        ball_locks: bd_lock
 #        replace_balls_in_play: true
 #        balls_to_replace: 2
 
@@ -169,9 +246,9 @@ multiball_locks:
     v_lock:
         balls_to_lock: 3
         lock_devices: bd_lock
-        locked_ball_counting_strategy: virtual_only
-        enable_events: enable_lock
-        disable_events: disable_lock
+        locked_ball_counting_strategy: no_virtual
+        enable_events: mode_base_started
+#        disable_events: multiball_lock_v_lock_full
 #        replace_balls_in_play: true
 #        balls_to_replace: 2
 state_machines:
@@ -475,5 +552,34 @@ shows:
               meds: off
               stim_right: red
               stim_left: red
+    helmet_flash:
+        - time: +10ms
+          lights:
+              helmet:
+                  color: red
+                  fade: 20ms
+        - time: +40ms
+          lights:
+              helmet:
+                  color: ffff00
+                  fade: 20ms
+    vault_boy_flash:
+        - time: +10ms
+          lights:
+              vault_boy:
+                  color: 00D5FF
+                  fade: 250ms      
+
+
+show_player:
+    rad_spin_hit:
+        helmet_flash:
+            action: play
+            loops: 0
+    center_ramp_hit:
+        vault_boy_flash:
+            action: play
+            loops: 0
+
 
     #etc...

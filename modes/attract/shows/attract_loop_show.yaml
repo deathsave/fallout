@@ -51,9 +51,12 @@
           vlock1: off
           vlock2: off
           vlock3: off
+          vault_boy: off
+      coils:
+          c_uv: off
     - time: "+3"
       lights:
-          rads: orange red
+          rads: BA0000
     - time: "+3"
       lights:
           rad1: green
@@ -93,12 +96,17 @@
           caps: white
           shoot_again: lime
           meds: purple
-          big_rad: red
-          stims: red
+          big_rad: BA0000
+          stims: BA0000
           vend: sandy brown
-          vlock1: red
+          vlock1: BA0000
           vlock2: ffff00
           vlock3: lime
+          vault_boy: 00D5FF
+
+      coils:
+          c_uv: on
+
     - time: "+3"
       lights:
           rads: off
@@ -111,9 +119,10 @@
           vlock1: off
           vlock2: off
           vlock3: off
+          vault_boy: off
     - time: "+2"
       lights:
-          rads: orange red
+          rads: BA0000
     - time: "+2"
       lights:
           caps: white
@@ -125,15 +134,18 @@
           meds: purple
     - time: "+2"
       lights:
-          big_rad: red
+          big_rad: BA0000
     - time: "+2"
       lights:
-          stims: red
+          stims: BA0000
     - time: "+2"
       lights:
           vend: sandy brown
     - time: "+2"
       lights:
-          vlock1: red
+          vlock1: BA0000
           vlock2: ffff00
           vlock3: lime
+    - time: "+2"
+      lights:
+          vault_boy: 00D5FF

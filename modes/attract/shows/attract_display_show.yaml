@@ -1,8 +1,8 @@
 #show_version=6
 ##! show: attract_display_show
-    - time: "+3"
+    - time: "+.3"
       slides: attract_slide1
-    - time: "+3"
+    - time: "+5"
       slides:
           show_final_scores:
               widgets:
@@ -170,6 +170,9 @@
                 text: (machine|score9_value)
                 style: attract_mode_high_score_display_score
                 y: top-680
-    - time: "+2"
+    - time: "+5"
       slides:
         attract_slide3
+    - time: "+5"
+      lights:
+          caps: off   
