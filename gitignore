@@ -1,7 +1,0 @@
-.DS_Store
-logs
-__pycache__
-
-data/*
-!data/.keep
-.python-version

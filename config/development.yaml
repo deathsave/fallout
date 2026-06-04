@@ -3,13 +3,13 @@
 config:
     - common.yaml
 
+hardware:
+    platform: smart_virtual
+
 virtual_platform_start_active_switches:
     - s_trough1
     - s_trough2
     - s_trough3
-
-hardware:
-    platform: smart_virtual
 
 kivy_config:
     graphics:
