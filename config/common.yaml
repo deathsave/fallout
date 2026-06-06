@@ -561,28 +561,28 @@ sound_player:
 
 sounds:
     base_start_1:
-        file: position.flac
+        file: position.ogg
         volume: 10
     base_start_2:
-        file: replacement.flac
+        file: replacement.ogg
         volume: 10
     base_start_3:
-        file: good_morning.flac
+        file: good_morning.ogg
         volume: 10
     base_start_4:
-        file: move_it.flac
+        file: move_it.ogg
         volume: 10
     base_end_1:
-        file: maggot.flac
+        file: maggot.ogg
         volume: 10
     base_end_2:
         file: better_go.ogg
         volume: 10
     base_end_3:
-        file: out_of_face.flac
+        file: out_of_face.ogg
         volume: 10
     base_end_4:
-        file: absurd.flac
+        file: absurd.ogg
         volume: 10
 
 sound_pools:
