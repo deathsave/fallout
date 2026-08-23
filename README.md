@@ -13,3 +13,5 @@ Running the Game
 - Production: `bin/run`
 - Development: `bin/dev`
 - Test Suite: `bin/test`
+
+![fallout pinball](https://github.com/deathsave/fallout/raw/main/monitor/playfield.jpg)

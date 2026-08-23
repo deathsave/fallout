@@ -1,3 +1,10 @@
 #!/bin/bash
 
-python -m unittest
+if ! [ -z "$CI" ]; then
+  # don't run verbose tests in CI
+  CMD="python -m unittest "
+else
+  CMD="python -m unittest -v"
+fi
+
+$CMD $1
