@@ -159,7 +159,7 @@ slides:
               x: right
               anchor_x: right
             - type: image
-              image: nuke1
+              image: nuke
               z: 1
               scale: .5
 slide_player:
@@ -171,6 +171,26 @@ slide_player:
 #        final_score_slide:
 #            expire: 30s
 
+drop_targets:
+    v:
+        switch: s_v
+        reset_coil: c_vats
+    a:
+        switch: s_a
+        reset_coil: c_vats
+    t:
+        switch: s_t
+        reset_coil: c_vats
+    s:
+        switch: s_s
+        reset_coil: c_vats
+
+drop_target_banks:
+    vats:
+        drop_targets: v, a, t, s
+        reset_coils: c_vats
+        reset_on_complete: 1s
+        reset_events: base_mode_started
 
 
 light_settings:
@@ -327,12 +347,10 @@ switches:
     s_left_flipper:
         number: 3208-0
         tags: left_flipper
-        type: 'NC'
         debounce: quick
     s_right_flipper:
         number: 3208-1
         tags: right_flipper
-        type: 'NC'
         debounce: quick
     s_l_stand:
         number: 3208-3
@@ -354,17 +372,13 @@ switches:
         number: 3208-2
         tags: start
     s_r_outlane:
-        number: 3208-18
-        tags: playfield_active
-    s_left_outlane:
-        number: 3208-17
-        tags: playfield_active
-    s_left_inlane:
-        number: 3208-16
-        tags: playfield_active
-    s_right_inlane:
-        number: 3208-19
-        tags: playfield_active
+        number: 3208-21
+    s_l_outlane:
+        number: 3208-20
+#    s_left_in_cap:
+#        number: 3208-16
+#    s_right_in_cap:
+#        number: 3208-19
     s_left_sling:
         number: 3208-8
     s_right_sling:
@@ -407,6 +421,23 @@ switches:
     s_lock3:
         number: 0804-6
         type: 'NC'
+    s_cap_left:
+        number: 3208-16
+        tags: caps
+    s_cap_center:
+        number: 3208-18
+        tags: caps
+    s_cap_right:
+        number: 3208-17
+        tags: caps 
+    s_v:
+        number: 3208-28
+    s_a:
+        number: 3208-29
+    s_t:
+        number: 3208-30
+    s_s:
+        number: 3208-31
 spinners:
     basic_spinner:
        switch: s_rspinner, s_lspinner, s_cspinner
@@ -416,30 +447,30 @@ coils:
     c_flipper_left_main:
         number: 3208-0
         allow_enable: true
-        default_pulse_ms: 20
-        default_hold_power: .25
+        default_pulse_ms: 24
+        default_hold_power: .4
 
     c_flipper_right_main:
         number: 3208-1
         allow_enable: true
-        default_pulse_ms: 20
-        default_hold_power: .25
+        default_pulse_ms: 24
+        default_hold_power: .4
 
     c_plunger:
         number: 3208-6
-        default_pulse_ms: 14
+        default_pulse_ms: 16
     c_trough_eject:
         number: 3208-7
         default_pulse_ms: 14
     c_sling_left:
         number: 3208-4
-        default_pulse_ms: 12
+        default_pulse_ms: 14
     c_sling_right:
         number: 3208-5
-        default_pulse_ms: 12
+        default_pulse_ms: 14
     c_scoop:
         number: 3208-3
-        default_pulse_ms: 12
+        default_pulse_ms: 14
     c_lock:
         number: 3208-2
         default_pulse_ms: 22
@@ -449,6 +480,12 @@ coils:
         default_pulse_ms: 25
         max_pulse_power: 1
         max_pulse_ms: 1000
+    c_vats:
+        number: 0804-1
+        default_pulse_ms: 16
+    c_3bank:
+        number: 0804-2
+        default_pulse_ms: 16
 
 coil_player:
     mode_attract_started:
@@ -538,9 +575,9 @@ sound_system:
 
 sound_player:
     mode_attract_started:
-      crawlout:
+      attract_start:
         action: play
-        loops: -1
+        loops: 0
     mode_attract_stopped:
       crawlout:
         action: stop
@@ -602,6 +639,27 @@ sound_pools:
             - base_end_2|3
             - base_end_3|3
             - base_end_4|3
+    attract_start:
+        type: random
+        track: music
+        sounds:
+            - big_iron
+            - crawlout
+            - maybe
+            - swing
+            - happy
+            - love_me
+            - movin
+            - bounce
+            - jingle
+            - sin
+            - hallo
+            - sin_lie
+            - under
+            - manhattan
+            - heartaches
+            - guitar
+
 
 machine_vars:
     master_volume:
@@ -616,6 +674,7 @@ modes:
 #    - bonus
     - high_score
     - attract
+#    - stim_pack_save
 
 widget_player:
     player_added{num==1}:

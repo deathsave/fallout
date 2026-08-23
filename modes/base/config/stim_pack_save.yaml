@@ -1,0 +1,12 @@
+#show_version=6
+#mode:
+#    start_events: enable_stim_pack_save
+#    stop_events: disable_stim_pack_save
+#    priority: 110
+
+#    stim_pack_save:
+#        active_time: "+8s"
+#        grace_period: ++2s"
+#        balls_to_save: 1
+#        auto_launch: true
+#        timer_start_events: s_l_outlane_active, s_r_outlane_active
