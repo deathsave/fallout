@@ -2,14 +2,15 @@
 
 show_player:
     mode_attract_started:
-        attract_loop_show:
+        # Playfield lights. The older, slower attract_loop_show is still in
+        # shows/ if you want it back (it ran at speed: 6).
+        attract_light_show:
             priority: 300
             loops: -1
-            speed: 6
         attract_display_show:
             priority: 300
             loops: -1
 
     mode_attract_stopping:
-        attract_loop_show:
+        attract_light_show:
             action: stop
