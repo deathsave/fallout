@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+
+config_version=5
+
+[application]
+
+config/name="fallout"
+config/description="Fallout pinball - Godot Media Controller (GMC) for MPF 0.80"
+run/main_scene="res://window.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+MPF="*res://addons/mpf-gmc/mpf_gmc.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+; The Ubuntu cabinet (replaces old kivy_config fullscreen/borderless settings)
+window/size/mode.linuxbsd=3
+window/size/borderless.linuxbsd=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mpf-gmc/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false

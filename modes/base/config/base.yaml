@@ -117,77 +117,77 @@ sound_player:
     rad_spin_hit:
         geiger:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     med_spin_hit:
         water:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     left_ramp_hit:
         left_ramp:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     right_ramp_hit:
         right_ramp:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     center_ramp_hit:
         objective:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     stand_up1_hit:
         caps:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     stand_up2_hit:
         caps:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     stand_up3_hit:
         caps:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     right_sling_hit:
         blaster:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     left_sling_hit:
         blaster:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     lock1_hit:
         vault_door:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     lock2_hit:
         vault_door:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     lock3_hit:
         vault_door:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     gun_spin_hit:
         gat:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     l_stand_hit:
         bark:
             action: play
-            track: sfx
+            bus: sfx
             volume: 1
     mode_base_started:
         base_start:

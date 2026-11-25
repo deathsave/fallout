@@ -1,53 +1,5 @@
 #config_version=6
 
-keyboard:
-    s:
-        switch: s_start
-    z:
-        switch: s_left_flipper
-    "/":
-        switch: s_right_flipper
-    1:
-        switch: s_trough1
-    2:
-        switch: s_trough2
-    3:
-        switch: s_trough3
-    l:
-        switch: s_shooter_lane
-        # switch: s_l_stand
-        # switch: s_r_outlane
-        # switch: s_left_outlane
-        # switch: s_left_inlane
-        # switch: s_right_inlane
-        # switch: s_left_sling
-        # switch: s_right_sling
-        # switch: s_right_ramp
-        # switch: s_left_ramp
-        # switch: s_center_ramp
-        # switch: s_stand_up1
-        # switch: s_stand_up2
-        # switch: s_stand_up3
-        # switch: s_scoop
-        # switch: s_lspinner
-        # switch: s_cspinner
-        # switch: s_rspinner
-        # switch: s_lock1
-        # switch: s_lock2
-        # switch: s_lock3
-
-kivy_config:
-    kivy:
-        desktop: 1
-        exit_on_escape: true
-        pause_on_minimize: 0
-    graphics:
-        window_state: visible # visible, hidden, maximized, minimized
-        fbo: software # hardware, software, force-hardware
-        maxfps: 30
-        multisamples: 2
-        rotation: 0
-
 displays:
     display1:
       width: 1920
@@ -60,108 +12,6 @@ displays:
 #      width: 2646
 #      height: 768
 
-slides:
-#    dual_screen_slide:
-#        - type: display
-#          source_display: display1
-#          width: 1366
-#          height: 768
-#          x: left
-#          anchor_x: left
-#        - type: display
-#          source_display: display2
-#          width: 1280
-#          height: 720
-#          x: right
-#          anchor_x: right
-    dspc_animation_slide:
-        target: display1
-        widgets:
-            - type: video
-              video: dspc-animation
-    welcome_slide:
-        target: display1
-        widgets:
-            - type: text
-              text: IF YOU SEE THIS, SOMETHING IS WRONG!
-              font_size: 50
-              color: red
-            - type: rectangle
-              width: 240
-              height: 60
-              x: left
-              anchor_x: left
-    attract_slide1:
-        target: display1
-        widgets:
-            - type: image
-              image: stand_by
-              scale: 3
-    attract_slide2:
-        widgets:
-            - type: image
-              image: wheel
-              scale: 2
-    attract_slide3:
-        widgets:
-            - type: image
-              image: fallout_new
-              scale: 3
-    final_score_slide:
-        widgets:
-            - type: text
-              text: FINAL SCORE
-              font_size: 42
-              color: black
-              y: 900
-              x: 1120
-              anchor_x: left
-              anchor_y: top
-            - type: image
-              image: final_score
-    base_slide:
-        widgets:
-            - type: text
-              font_name: Wideg
-              text: (score)
-              number_grouping: true
-              min_digits: 2
-              font_size: 45
-              color: yellow
-              y: 1000
-              x: 1000
-              z: 10
-              anchor_x: right
-              anchor_y: bottom
-            - type: text
-              font_name: Wideg
-              text: PLAYER (number)
-              y: 1000
-              x: 20
-              z: 10
-              font_size: 50
-              color: yellow
-              anchor_x: left
-              anchor_y: bottom
-            - type: text
-              font_name: Wideg
-              text: BALL (ball)
-              color: yellow
-              y: 900
-              x: 20
-              z: 10
-              anchor_x: left
-              anchor_y: bottom
-              font_size: 50
-            - type: image
-              image: fallout_ui_clear
-              z: 5
-              x: right
-              anchor_x: right
-            - type: image
-              image: nuke1
-              z: 1
-              scale: .5
 slide_player:
 #    mc_ready:
 #        dual_screen_slide:
@@ -170,7 +20,6 @@ slide_player:
 #    game_ending:
 #        final_score_slide:
 #            expire: 30s
-
 
 
 light_settings:
@@ -517,25 +366,6 @@ flippers:
         main_coil: c_flipper_right_main
         activation_switch: s_right_flipper
 
-sound_system:
-    buffer: 1024
-    channels: 1
-    enabled: true
-    frequency: 44100
-    tracks:
-        music:
-            type: standard
-            simultaneous_sounds: 1
-            volume: 0.8
-        voice:
-            type: standard
-            simultaneous_sounds: 1
-            volume: 0.9
-        sfx:
-            type: standard
-            simultaneous_sounds: 8
-            volume: 0.8
-
 sound_player:
     mode_attract_started:
       crawlout:
@@ -544,7 +374,7 @@ sound_player:
     mode_attract_stopped:
       crawlout:
         action: stop
-    s_rspinner_active: geiger_sfx
+    s_rspinner_active: geiger
 
     mode_base_started:
       combat_ready:
@@ -552,56 +382,15 @@ sound_player:
         loops: -1
         volume: .9
     mode_base_stopped:
-      combat_ready: stop
-      action: stop
+      combat_ready:
+        action: stop
       better_go:
         action: play
         loops: 0
         volume: .9
 
-sounds:
-    base_start_1:
-        file: position.ogg
-        volume: 10
-    base_start_2:
-        file: replacement.ogg
-        volume: 10
-    base_start_3:
-        file: good_morning.ogg
-        volume: 10
-    base_start_4:
-        file: move_it.ogg
-        volume: 10
-    base_end_1:
-        file: maggot.ogg
-        volume: 10
-    base_end_2:
-        file: better_go.ogg
-        volume: 10
-    base_end_3:
-        file: out_of_face.ogg
-        volume: 10
-    base_end_4:
-        file: absurd.ogg
-        volume: 10
-
-sound_pools:
-    base_start:
-        type: random
-        track: voice
-        sounds:
-            - base_start_1|3
-            - base_start_2|3
-            - base_start_3|3
-            - base_start_4|3
-    base_end:
-        type: random
-        track: voice
-        sounds:
-            - base_end_1|3
-            - base_end_2|3
-            - base_end_3|3
-            - base_end_4|3
+# MPF 0.80: sound pools base_start/base_end are Godot AudioStreamRandomizer
+# resources in sounds/pools/*.tres (see GMC docs).
 
 machine_vars:
     master_volume:
@@ -631,115 +420,7 @@ widget_player:
         player4_scoring:
             slide: base_slide
 
-widgets:
-    player1_scoring:
-        - type: text
-          font_name: Wideg
-          text: P1 (player1|score)
-          number_grouping: true
-          min_digits: 2
-          font_size: 45
-          color: yellow
-          y: 1000
-          x: 1700
-          z: 10
-          anchor_x: right
-          anchor_y: bottom
-    player2_scoring:
-        - type: text
-          font_name: Wideg
-          text: P2 (player2|score)
-          number_grouping: true
-          min_digits: 2
-          font_size: 45
-          color: yellow
-          y: 900
-          x: 1700
-          z: 10
-          anchor_x: right
-          anchor_y: bottom
-    player3_scoring:
-        - type: text
-          font_name: Wideg
-          text: P3 (player3|score)
-          number_grouping: true
-          min_digits: 2
-          font_size: 45
-          color: yellow
-          y: 800
-          x: 1700
-          z: 10
-          anchor_x: right
-          anchor_y: bottom
-    player4_scoring:
-        - type: text
-          font_name: Wideg
-          text: P4 (player4|score)
-          number_grouping: true
-          min_digits: 2
-          font_size: 45
-          color: yellow
-          y: 700
-          x: 1700
-          z: 10
-          anchor_x: right
-          anchor_y: bottom
-
-widget_styles:
-    attract_mode_high_score_display_label:
-        font_name: Wideg
-        font_size: 25
-        anchor_x: right
-        anchor_y: top
-        x: center-110
-        color: yellow
-    attract_mode_high_score_display_name:
-        font_name: Wideg
-        font_size: 20
-        anchor_x: right
-        anchor_y: top
-        x: center+150
-        color: yellow
-    attract_mode_high_score_display_score:
-        font_name: Wideg
-        font_size: 30
-        anchor_x: left
-        anchor_y: top
-        x: center+240
-        number_grouping: true
-        min_digits: 1
-        color: yellow
-    attract_mode_final_score_display_player_number:
-        font_name: Wideg
-        font_size: 30
-        anchor_x: center
-        anchor_y: top
-        x: center-80
-        bold: true
-        color: yellow
-    attract_mode_final_score_display_score:
-        font_name: Wideg
-        font_size: 40
-        anchor_x: left
-        anchor_y: top
-        x: center+60
-        number_grouping: true
-        min_digits: 1
-        color: yellow
-
-assets:
-    sounds:
-        default:
-            load: on_demand
-        music:
-            track: music
-        sfx:
-            track: sfx
-        voice:
-            track: voice
-
 game:
     balls_per_game: 3
     max_players: 4
 
-#sound_pools:

@@ -1,4 +1,4 @@
-# both mpf and mpf-mc, smart virtual,
-# text only UI and force loading / no cache
-mpf: mpf both -Xta
+# MPF 0.80 + Godot MC (GMC): smart virtual, text UI, force config load.
+# bin/dev sets GODOT_BIN to the Godot executable.
+mpf: mpf both -Xta -G "$GODOT_BIN"
 monitor: mpf monitor

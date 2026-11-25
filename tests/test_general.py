@@ -1,22 +1,24 @@
 """Tests General/Base Functionality"""
 
-import os
-from mpf.tests.MpfMachineTestCase import MpfMachineTestCase
+from tests.machine_test_case import FalloutMachineTestCase
 
-class TestGeneral(MpfMachineTestCase):
+
+class TestGeneral(FalloutMachineTestCase):
 
     """Tests start-up sequence"""
-
-    def get_config_file(self):
-        return 'config.yaml'
-
-    def get_machine_path(self):
-        return os.path.abspath(os.path.join(
-            os.path.realpath(__file__),
-            os.pardir,os.pardir
-        ))
 
     def test_start(self):
         self.assertModeRunning('attract')
         self.assertEqual(3,
             self.machine.ball_devices.bd_trough.balls)
+
+    def test_game_start(self):
+        """Start a game and make sure base mode and the ball run."""
+        self.hit_and_release_switch('s_start')
+        self.advance_time_and_run(4)
+        self.assertIsNotNone(self.machine.game)
+        self.assertModeRunning('base')
+        self.assertEqual(1, self.machine.game.player.ball)
+        self.hit_and_release_switch('s_rspinner')
+        self.advance_time_and_run(1)
+        self.assertEqual(100, self.machine.game.player.score)

@@ -1,3 +1,4 @@
 #!/bin/bash
 
-mpf both -v -c production_linux
+# MPF 0.80 + Godot MC. Expects `godot` (Godot 4) on PATH, or set GODOT_BIN.
+mpf both -v -c production_linux -G "${GODOT_BIN:-godot}"

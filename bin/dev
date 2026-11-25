@@ -5,4 +5,18 @@ then
   echo "Installing foreman..."
   gem install foreman
 fi
+
+# Locate Godot 4 for the GMC media controller
+if [ -z "$GODOT_BIN" ]; then
+  if command -v godot &> /dev/null; then
+    GODOT_BIN=godot
+  elif [ -x /Applications/Godot.app/Contents/MacOS/Godot ]; then
+    GODOT_BIN=/Applications/Godot.app/Contents/MacOS/Godot
+  else
+    echo "Godot 4 not found. Install it or set GODOT_BIN." >&2
+    exit 1
+  fi
+fi
+export GODOT_BIN
+
 foreman start --procfile Procfile.dev
