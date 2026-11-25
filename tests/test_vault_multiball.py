@@ -3,7 +3,9 @@
 from tests.machine_test_case import FalloutMachineTestCase
 
 
-class TestVaultMultiball(FalloutMachineTestCase):
+class BallHelpers(FalloutMachineTestCase):
+
+    """Helpers for moving balls around in a game (no tests of its own)."""
 
     def start_game_and_plunge(self):
         self.hit_and_release_switch('s_start')
@@ -23,6 +25,9 @@ class TestVaultMultiball(FalloutMachineTestCase):
         self.machine.default_platform.add_ball_to_device(
             self.machine.ball_devices.bd_trough)
         self.advance_time_and_run(1)
+
+
+class TestVaultMultiball(BallHelpers):
 
     def lock_three_and_start_multiball(self):
         lock = self.machine.multiball_locks.v_lock

@@ -71,6 +71,26 @@ light_player:
         vlock2: ffff00
     multiball_vault_multiball_ended:
         vlock: off
+    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls==0}:
+        vlock: off
+    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls==1}:
+        vlock1: red
+        vlock2: off
+        vlock3: off
+    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
+        vlock1: red
+        vlock2: ffff00
+        vlock3: off
+    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls==0}:
+        vlock: off
+    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls==1}:
+        vlock1: red
+        vlock2: off
+        vlock3: off
+    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
+        vlock1: red
+        vlock2: ffff00
+        vlock3: off
 
 
 variable_player:
@@ -254,6 +274,21 @@ multiballs:
         replace_balls_in_play: true
         start_events: multiball_lock_v_lock_full
 
+    # Rads multiball: 3 balls when the rad meter fills. Served from the
+    # trough; only if the trough is short are balls taken from the vault
+    # (MPF always empties ball_locks first, hence the two variants).
+    rads_multiball:
+        ball_count: 3
+        ball_count_type: total
+        shoot_again: 10s
+        start_events: rad_meter_full{device.ball_devices.bd_trough.balls>=2}
+    rads_vault_multiball:
+        ball_count: 3
+        ball_count_type: total
+        shoot_again: 10s
+        ball_locks: bd_lock
+        start_events: rad_meter_full{device.ball_devices.bd_trough.balls<2}
+
 multiball_locks:
     v_lock:
         balls_to_lock: 3
@@ -266,8 +301,8 @@ multiball_locks:
         balls_to_replace: 2
         # Off during the multiball (balls entering the vault are kicked
         # back out), back on for the next one.
-        enable_events: mode_base_started, multiball_vault_multiball_ended
-        disable_events: multiball_lock_v_lock_full
+        enable_events: mode_base_started, multiball_vault_multiball_ended, multiball_rads_multiball_ended, multiball_rads_vault_multiball_ended
+        disable_events: multiball_lock_v_lock_full, multiball_rads_multiball_started, multiball_rads_vault_multiball_started
 
 state_machines:
     rad_meter_status:
@@ -319,6 +354,7 @@ state_machines:
                 show_when_active:
                     show: rad_level10_show
                     show_tokens: None
+                events_when_started: rad_meter_full
                 #etc
         transitions:
             - source: rads0
@@ -353,7 +389,7 @@ state_machines:
               events: logicblock_rad_spin_sequence_complete
             - source: rads10
               target: rads0
-              events: reset_rad_meter
+              events: reset_rad_meter, multiball_rads_multiball_started, multiball_rads_vault_multiball_started
     med_meter_status:
         persist_state: true #so this will hold state across balls
         starting_state: med0
@@ -581,6 +617,137 @@ shows:
               helmet:
                   color: ffff00
                   fade: 20ms
+    rads_multiball_show:
+        - duration: 80ms
+          lights:
+              rads1: red
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: red
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: red
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: off
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: red
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: red
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: red
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: off
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: red
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: red
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: red
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: off
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: red
+              rads8: off
+              rads9: off
+              rads10: off
+              big_rad: red
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: red
+              rads9: off
+              rads10: off
+              big_rad: off
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: red
+              rads10: off
+              big_rad: red
+        - duration: 80ms
+          lights:
+              rads1: off
+              rads2: off
+              rads3: off
+              rads4: off
+              rads5: off
+              rads6: off
+              rads7: off
+              rads8: off
+              rads9: off
+              rads10: red
+              big_rad: off
     vault_multiball_show:
         - duration: 150ms
           lights:
@@ -618,6 +785,22 @@ shows:
 
 
 show_player:
+    multiball_rads_multiball_started:
+        rads_multiball_show:
+            action: play
+            loops: -1
+            priority: 10
+    multiball_rads_multiball_ended:
+        rads_multiball_show:
+            action: stop
+    multiball_rads_vault_multiball_started:
+        rads_multiball_show:
+            action: play
+            loops: -1
+            priority: 10
+    multiball_rads_vault_multiball_ended:
+        rads_multiball_show:
+            action: stop
     multiball_vault_multiball_started:
         vault_multiball_show:
             action: play
