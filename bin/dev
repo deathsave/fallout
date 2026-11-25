@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# Gems installed with --user-install land here (no sudo needed)
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
 if ! command -v foreman &> /dev/null
 then
   echo "Installing foreman..."
-  gem install foreman
+  gem install --user-install foreman || exit 1
 fi
 
 # Locate Godot 4 for the GMC media controller

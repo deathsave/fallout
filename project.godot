@@ -9,7 +9,7 @@ config_version=5
 config/name="fallout"
 config/description="Fallout pinball - Godot Media Controller (GMC) for MPF 0.80"
 run/main_scene="res://window.tscn"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
@@ -30,6 +30,13 @@ window/size/borderless.linuxbsd=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/mpf-gmc/plugin.cfg")
+
+[rendering]
+
+; Compatibility (OpenGL) renderer: plenty for a 2D pinball display, and the
+; Vulkan/Forward+ renderer hangs at window creation on some Macs (AMD GPU).
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 
 [filesystem]
 
