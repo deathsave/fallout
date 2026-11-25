@@ -10,9 +10,10 @@ import sys
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
     os.path.dirname(__file__), os.pardir, "modes", "attract", "shows", "attract_light_show.yaml")
 
-RED, YELLOW, GREEN, WHITE = "FF0000", "FFFF00", "00FF00", "FFFFFF"
-PURPLE, ORANGE, BLUE, AMBER = "8000FF", "FF5500", "00D5FF", "FFB000"
-RAD_RED = "BA0000"
+# Only MPF's built-in named colours (mpf.core.rgb_color.NAMED_RGB_COLORS)
+RED, YELLOW, GREEN, WHITE = "red", "yellow", "lime", "white"
+PURPLE, ORANGE, BLUE, AMBER = "purple", "orangered", "deepskyblue", "orange"
+RAD_RED, VEND = "darkred", "sandybrown"
 OFF = "off"
 
 RADS = [f"rads{i}" for i in range(1, 11)]
@@ -90,7 +91,7 @@ for n, color in enumerate([RED, AMBER, YELLOW, GREEN]):
 # --- 6. Rest: the normal attract colours for a moment ----------------------
 step(3000, {**{r: RAD_RED for r in RADS}, **{c: WHITE for c in CAPS},
             "shoot_again": GREEN, **{m: PURPLE for m in MEDS}, "big_rad": RED,
-            "stim_left": RAD_RED, "stim_right": RAD_RED, "vend1": AMBER, "vedn2": AMBER,
+            "stim_left": RAD_RED, "stim_right": RAD_RED, "vend1": VEND, "vedn2": VEND,
             "vlock1": RED, "vlock2": YELLOW, "vlock3": GREEN,
             **{h: YELLOW for h in HELMET}, "vault_boy": BLUE,
             **{s: YELLOW for s in LEFT_SLINGS + RIGHT_SLINGS}},
@@ -115,6 +116,6 @@ for i, (comment, ms, lights) in enumerate(steps):
         continue
     lines.append("  lights:")
     for name, color in changed.items():
-        lines.append(f"    {name}: {color if color == OFF else repr(color)}")
+        lines.append(f"    {name}: {color}")
 open(OUT, "w").write("\n".join(lines) + "\n")
 print(f"{len(steps)} steps, {total / 1000:.1f}s")

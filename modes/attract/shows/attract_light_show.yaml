@@ -8,7 +8,7 @@
 # Geiger counter: rad meter fills
 - duration: 120ms
   lights:
-    rads1: '00FF00'
+    rads1: lime
     rads2: off
     rads3: off
     rads4: off
@@ -52,42 +52,42 @@
     sling_right_bottom: off
 - duration: 120ms
   lights:
-    rads2: '00FF00'
+    rads2: lime
 - duration: 120ms
   lights:
-    rads3: '00FF00'
+    rads3: lime
 - duration: 120ms
   lights:
-    rads4: '00FF00'
+    rads4: lime
 - duration: 120ms
   lights:
-    rads5: 'FFFF00'
+    rads5: yellow
 - duration: 120ms
   lights:
-    rads6: 'FFFF00'
+    rads6: yellow
 - duration: 120ms
   lights:
-    rads7: 'FFFF00'
+    rads7: yellow
 - duration: 120ms
   lights:
-    rads8: 'FF0000'
+    rads8: red
 - duration: 120ms
   lights:
-    rads9: 'FF0000'
+    rads9: red
 - duration: 120ms
   lights:
-    rads10: 'FF0000'
+    rads10: red
 # big rad goes critical
 - duration: 120ms
   lights:
-    big_rad: 'FF0000'
-    rads1: 'FF0000'
-    rads2: 'FF0000'
-    rads3: 'FF0000'
-    rads4: 'FF0000'
-    rads5: 'FF0000'
-    rads6: 'FF0000'
-    rads7: 'FF0000'
+    big_rad: red
+    rads1: red
+    rads2: red
+    rads3: red
+    rads4: red
+    rads5: red
+    rads6: red
+    rads7: red
 - duration: 120ms
   lights:
     big_rad: off
@@ -103,17 +103,17 @@
     rads10: off
 - duration: 120ms
   lights:
-    big_rad: 'FF0000'
-    rads1: 'FF0000'
-    rads2: 'FF0000'
-    rads3: 'FF0000'
-    rads4: 'FF0000'
-    rads5: 'FF0000'
-    rads6: 'FF0000'
-    rads7: 'FF0000'
-    rads8: 'FF0000'
-    rads9: 'FF0000'
-    rads10: 'FF0000'
+    big_rad: red
+    rads1: red
+    rads2: red
+    rads3: red
+    rads4: red
+    rads5: red
+    rads6: red
+    rads7: red
+    rads8: red
+    rads9: red
+    rads10: red
 - duration: 120ms
   lights:
     big_rad: off
@@ -129,17 +129,17 @@
     rads10: off
 - duration: 120ms
   lights:
-    big_rad: 'FF0000'
-    rads1: 'FF0000'
-    rads2: 'FF0000'
-    rads3: 'FF0000'
-    rads4: 'FF0000'
-    rads5: 'FF0000'
-    rads6: 'FF0000'
-    rads7: 'FF0000'
-    rads8: 'FF0000'
-    rads9: 'FF0000'
-    rads10: 'FF0000'
+    big_rad: red
+    rads1: red
+    rads2: red
+    rads3: red
+    rads4: red
+    rads5: red
+    rads6: red
+    rads7: red
+    rads8: red
+    rads9: red
+    rads10: red
 - duration: 120ms
   lights:
     big_rad: off
@@ -155,17 +155,17 @@
     rads10: off
 - duration: 120ms
   lights:
-    big_rad: 'FF0000'
-    rads1: 'FF0000'
-    rads2: 'FF0000'
-    rads3: 'FF0000'
-    rads4: 'FF0000'
-    rads5: 'FF0000'
-    rads6: 'FF0000'
-    rads7: 'FF0000'
-    rads8: 'FF0000'
-    rads9: 'FF0000'
-    rads10: 'FF0000'
+    big_rad: red
+    rads1: red
+    rads2: red
+    rads3: red
+    rads4: red
+    rads5: red
+    rads6: red
+    rads7: red
+    rads8: red
+    rads9: red
+    rads10: red
 - duration: 120ms
   lights:
     big_rad: off
@@ -182,102 +182,102 @@
 # Vault door: locks open
 - duration: 250ms
   lights:
-    vlock1: 'FF0000'
+    vlock1: red
 - duration: 250ms
   lights:
-    vlock2: 'FFFF00'
+    vlock2: yellow
 - duration: 250ms
   lights:
-    vlock3: '00FF00'
+    vlock3: lime
 # vault boy
 - duration: 150ms
   lights:
-    vault_boy: '00D5FF'
+    vault_boy: deepskyblue
 - duration: 150ms
   lights:
     vault_boy: off
 - duration: 150ms
   lights:
-    vault_boy: '00D5FF'
+    vault_boy: deepskyblue
 - duration: 150ms
   lights:
     vault_boy: off
 - duration: 150ms
   lights:
-    vault_boy: '00D5FF'
+    vault_boy: deepskyblue
 - duration: 150ms
   lights:
     vault_boy: off
 # Loot: bottle caps chase
 - duration: 90ms
   lights:
-    cap_left: 'FFFFFF'
+    cap_left: white
     vlock1: off
     vlock2: off
     vlock3: off
 - duration: 90ms
   lights:
     cap_left: off
-    cap_center: 'FFFFFF'
+    cap_center: white
 - duration: 90ms
   lights:
     cap_center: off
-    cap_right: 'FFFFFF'
+    cap_right: white
 - duration: 90ms
   lights:
     cap_right: off
-    capin_left: 'FFFFFF'
+    capin_left: white
 - duration: 90ms
   lights:
     capin_left: off
-    capin_right: 'FFFFFF'
+    capin_right: white
 - duration: 90ms
   lights:
-    cap_left: 'FFFFFF'
+    cap_left: white
     capin_right: off
 - duration: 90ms
   lights:
     cap_left: off
-    cap_center: 'FFFFFF'
+    cap_center: white
 - duration: 90ms
   lights:
     cap_center: off
-    cap_right: 'FFFFFF'
+    cap_right: white
 - duration: 90ms
   lights:
     cap_right: off
-    capin_left: 'FFFFFF'
+    capin_left: white
 - duration: 90ms
   lights:
     capin_left: off
-    capin_right: 'FFFFFF'
+    capin_right: white
 # med kits fill
 - duration: 160ms
   lights:
     capin_right: off
-    med1: '8000FF'
+    med1: purple
 - duration: 160ms
   lights:
-    med2: '8000FF'
+    med2: purple
 - duration: 160ms
   lights:
-    med3: '8000FF'
+    med3: purple
 - duration: 160ms
   lights:
-    med4: '8000FF'
+    med4: purple
 # stims pulse
 - duration: 150ms
   lights:
-    stim_left: 'FF0000'
-    stim_right: 'FF0000'
+    stim_left: red
+    stim_right: red
 - duration: 150ms
   lights:
     stim_left: off
     stim_right: off
 - duration: 150ms
   lights:
-    stim_left: 'FF0000'
-    stim_right: 'FF0000'
+    stim_left: red
+    stim_right: red
 - duration: 150ms
   lights:
     stim_left: off
@@ -289,150 +289,150 @@
     med2: off
     med3: off
     med4: off
-    power1: 'FFFF00'
+    power1: yellow
 - duration: 80ms
   lights:
-    powers: 'FFFF00'
+    powers: yellow
 - duration: 80ms
   lights:
-    power3: 'FFFF00'
+    power3: yellow
 - duration: 80ms
   lights:
-    power4: 'FFFF00'
+    power4: yellow
 - duration: 80ms
   lights:
-    power5: 'FFFF00'
+    power5: yellow
 - duration: 80ms
   lights:
-    power6: 'FFFF00'
+    power6: yellow
 - duration: 80ms
   lights:
-    power7: 'FFFF00'
+    power7: yellow
 - duration: 80ms
   lights:
-    power8: 'FFFF00'
+    power8: yellow
 - duration: 80ms
   lights:
-    power9: 'FFFF00'
+    power9: yellow
 # slings fire left / right
 - duration: 200ms
   lights:
-    sling_left_top: 'FF5500'
-    sling_left_bottom: 'FF5500'
+    sling_left_top: orangered
+    sling_left_bottom: orangered
 - duration: 200ms
   lights:
     sling_left_top: off
     sling_left_bottom: off
-    sling_right_top: 'FF5500'
-    sling_right_bottom: 'FF5500'
+    sling_right_top: orangered
+    sling_right_bottom: orangered
 - duration: 200ms
   lights:
-    sling_left_top: 'FF5500'
-    sling_left_bottom: 'FF5500'
+    sling_left_top: orangered
+    sling_left_bottom: orangered
     sling_right_top: off
     sling_right_bottom: off
-    power1: 'FF0000'
-    powers: 'FF0000'
-    power3: 'FF0000'
-    power4: 'FF0000'
-    power5: 'FF0000'
-    power6: 'FF0000'
-    power7: 'FF0000'
-    power8: 'FF0000'
-    power9: 'FF0000'
+    power1: red
+    powers: red
+    power3: red
+    power4: red
+    power5: red
+    power6: red
+    power7: red
+    power8: red
+    power9: red
 - duration: 200ms
   lights:
     sling_left_top: off
     sling_left_bottom: off
-    sling_right_top: 'FF5500'
-    sling_right_bottom: 'FF5500'
+    sling_right_top: orangered
+    sling_right_bottom: orangered
 - duration: 200ms
   lights:
-    sling_left_top: 'FF5500'
-    sling_left_bottom: 'FF5500'
+    sling_left_top: orangered
+    sling_left_bottom: orangered
     sling_right_top: off
     sling_right_bottom: off
-    power1: 'FFFF00'
-    powers: 'FFFF00'
-    power3: 'FFFF00'
-    power4: 'FFFF00'
-    power5: 'FFFF00'
-    power6: 'FFFF00'
-    power7: 'FFFF00'
-    power8: 'FFFF00'
-    power9: 'FFFF00'
+    power1: yellow
+    powers: yellow
+    power3: yellow
+    power4: yellow
+    power5: yellow
+    power6: yellow
+    power7: yellow
+    power8: yellow
+    power9: yellow
 - duration: 200ms
   lights:
     sling_left_top: off
     sling_left_bottom: off
-    sling_right_top: 'FF5500'
-    sling_right_bottom: 'FF5500'
+    sling_right_top: orangered
+    sling_right_bottom: orangered
 - duration: 200ms
   lights:
-    sling_left_top: 'FF5500'
-    sling_left_bottom: 'FF5500'
+    sling_left_top: orangered
+    sling_left_bottom: orangered
     sling_right_top: off
     sling_right_bottom: off
-    power1: 'FF0000'
-    powers: 'FF0000'
-    power3: 'FF0000'
-    power4: 'FF0000'
-    power5: 'FF0000'
-    power6: 'FF0000'
-    power7: 'FF0000'
-    power8: 'FF0000'
-    power9: 'FF0000'
+    power1: red
+    powers: red
+    power3: red
+    power4: red
+    power5: red
+    power6: red
+    power7: red
+    power8: red
+    power9: red
 - duration: 200ms
   lights:
     sling_left_top: off
     sling_left_bottom: off
-    sling_right_top: 'FF5500'
-    sling_right_bottom: 'FF5500'
+    sling_right_top: orangered
+    sling_right_bottom: orangered
 # Nuke: full playfield flash
 - duration: 120ms
   lights:
-    rads1: 'FFFFFF'
-    rads2: 'FFFFFF'
-    rads3: 'FFFFFF'
-    rads4: 'FFFFFF'
-    rads5: 'FFFFFF'
-    rads6: 'FFFFFF'
-    rads7: 'FFFFFF'
-    rads8: 'FFFFFF'
-    rads9: 'FFFFFF'
-    rads10: 'FFFFFF'
-    big_rad: 'FFFFFF'
-    cap_left: 'FFFFFF'
-    cap_center: 'FFFFFF'
-    cap_right: 'FFFFFF'
-    capin_left: 'FFFFFF'
-    capin_right: 'FFFFFF'
-    med1: 'FFFFFF'
-    med2: 'FFFFFF'
-    med3: 'FFFFFF'
-    med4: 'FFFFFF'
-    vlock1: 'FFFFFF'
-    vlock2: 'FFFFFF'
-    vlock3: 'FFFFFF'
-    vend1: 'FFFFFF'
-    vedn2: 'FFFFFF'
-    vault_boy: 'FFFFFF'
-    shoot_again: 'FFFFFF'
-    stim_left: 'FFFFFF'
-    stim_right: 'FFFFFF'
-    power1: 'FFFFFF'
-    powers: 'FFFFFF'
-    power3: 'FFFFFF'
-    power4: 'FFFFFF'
-    power5: 'FFFFFF'
-    power6: 'FFFFFF'
-    power7: 'FFFFFF'
-    power8: 'FFFFFF'
-    power9: 'FFFFFF'
-    sling_left_top: 'FFFFFF'
-    sling_left_bottom: 'FFFFFF'
-    sling_right_top: 'FFFFFF'
-    sling_right_bottom: 'FFFFFF'
+    rads1: white
+    rads2: white
+    rads3: white
+    rads4: white
+    rads5: white
+    rads6: white
+    rads7: white
+    rads8: white
+    rads9: white
+    rads10: white
+    big_rad: white
+    cap_left: white
+    cap_center: white
+    cap_right: white
+    capin_left: white
+    capin_right: white
+    med1: white
+    med2: white
+    med3: white
+    med4: white
+    vlock1: white
+    vlock2: white
+    vlock3: white
+    vend1: white
+    vedn2: white
+    vault_boy: white
+    shoot_again: white
+    stim_left: white
+    stim_right: white
+    power1: white
+    powers: white
+    power3: white
+    power4: white
+    power5: white
+    power6: white
+    power7: white
+    power8: white
+    power9: white
+    sling_left_top: white
+    sling_left_bottom: white
+    sling_right_top: white
+    sling_right_bottom: white
 - duration: 120ms
   lights:
     rads1: off
@@ -479,48 +479,48 @@
     sling_right_bottom: off
 - duration: 120ms
   lights:
-    rads1: 'FFFFFF'
-    rads2: 'FFFFFF'
-    rads3: 'FFFFFF'
-    rads4: 'FFFFFF'
-    rads5: 'FFFFFF'
-    rads6: 'FFFFFF'
-    rads7: 'FFFFFF'
-    rads8: 'FFFFFF'
-    rads9: 'FFFFFF'
-    rads10: 'FFFFFF'
-    big_rad: 'FFFFFF'
-    cap_left: 'FFFFFF'
-    cap_center: 'FFFFFF'
-    cap_right: 'FFFFFF'
-    capin_left: 'FFFFFF'
-    capin_right: 'FFFFFF'
-    med1: 'FFFFFF'
-    med2: 'FFFFFF'
-    med3: 'FFFFFF'
-    med4: 'FFFFFF'
-    vlock1: 'FFFFFF'
-    vlock2: 'FFFFFF'
-    vlock3: 'FFFFFF'
-    vend1: 'FFFFFF'
-    vedn2: 'FFFFFF'
-    vault_boy: 'FFFFFF'
-    shoot_again: 'FFFFFF'
-    stim_left: 'FFFFFF'
-    stim_right: 'FFFFFF'
-    power1: 'FFFFFF'
-    powers: 'FFFFFF'
-    power3: 'FFFFFF'
-    power4: 'FFFFFF'
-    power5: 'FFFFFF'
-    power6: 'FFFFFF'
-    power7: 'FFFFFF'
-    power8: 'FFFFFF'
-    power9: 'FFFFFF'
-    sling_left_top: 'FFFFFF'
-    sling_left_bottom: 'FFFFFF'
-    sling_right_top: 'FFFFFF'
-    sling_right_bottom: 'FFFFFF'
+    rads1: white
+    rads2: white
+    rads3: white
+    rads4: white
+    rads5: white
+    rads6: white
+    rads7: white
+    rads8: white
+    rads9: white
+    rads10: white
+    big_rad: white
+    cap_left: white
+    cap_center: white
+    cap_right: white
+    capin_left: white
+    capin_right: white
+    med1: white
+    med2: white
+    med3: white
+    med4: white
+    vlock1: white
+    vlock2: white
+    vlock3: white
+    vend1: white
+    vedn2: white
+    vault_boy: white
+    shoot_again: white
+    stim_left: white
+    stim_right: white
+    power1: white
+    powers: white
+    power3: white
+    power4: white
+    power5: white
+    power6: white
+    power7: white
+    power8: white
+    power9: white
+    sling_left_top: white
+    sling_left_bottom: white
+    sling_right_top: white
+    sling_right_bottom: white
 - duration: 120ms
   lights:
     rads1: off
@@ -567,48 +567,48 @@
     sling_right_bottom: off
 - duration: 120ms
   lights:
-    rads1: 'FFFFFF'
-    rads2: 'FFFFFF'
-    rads3: 'FFFFFF'
-    rads4: 'FFFFFF'
-    rads5: 'FFFFFF'
-    rads6: 'FFFFFF'
-    rads7: 'FFFFFF'
-    rads8: 'FFFFFF'
-    rads9: 'FFFFFF'
-    rads10: 'FFFFFF'
-    big_rad: 'FFFFFF'
-    cap_left: 'FFFFFF'
-    cap_center: 'FFFFFF'
-    cap_right: 'FFFFFF'
-    capin_left: 'FFFFFF'
-    capin_right: 'FFFFFF'
-    med1: 'FFFFFF'
-    med2: 'FFFFFF'
-    med3: 'FFFFFF'
-    med4: 'FFFFFF'
-    vlock1: 'FFFFFF'
-    vlock2: 'FFFFFF'
-    vlock3: 'FFFFFF'
-    vend1: 'FFFFFF'
-    vedn2: 'FFFFFF'
-    vault_boy: 'FFFFFF'
-    shoot_again: 'FFFFFF'
-    stim_left: 'FFFFFF'
-    stim_right: 'FFFFFF'
-    power1: 'FFFFFF'
-    powers: 'FFFFFF'
-    power3: 'FFFFFF'
-    power4: 'FFFFFF'
-    power5: 'FFFFFF'
-    power6: 'FFFFFF'
-    power7: 'FFFFFF'
-    power8: 'FFFFFF'
-    power9: 'FFFFFF'
-    sling_left_top: 'FFFFFF'
-    sling_left_bottom: 'FFFFFF'
-    sling_right_top: 'FFFFFF'
-    sling_right_bottom: 'FFFFFF'
+    rads1: white
+    rads2: white
+    rads3: white
+    rads4: white
+    rads5: white
+    rads6: white
+    rads7: white
+    rads8: white
+    rads9: white
+    rads10: white
+    big_rad: white
+    cap_left: white
+    cap_center: white
+    cap_right: white
+    capin_left: white
+    capin_right: white
+    med1: white
+    med2: white
+    med3: white
+    med4: white
+    vlock1: white
+    vlock2: white
+    vlock3: white
+    vend1: white
+    vedn2: white
+    vault_boy: white
+    shoot_again: white
+    stim_left: white
+    stim_right: white
+    power1: white
+    powers: white
+    power3: white
+    power4: white
+    power5: white
+    power6: white
+    power7: white
+    power8: white
+    power9: white
+    sling_left_top: white
+    sling_left_bottom: white
+    sling_right_top: white
+    sling_right_bottom: white
 - duration: 120ms
   lights:
     rads1: off
@@ -655,48 +655,48 @@
     sling_right_bottom: off
 - duration: 120ms
   lights:
-    rads1: 'FFFFFF'
-    rads2: 'FFFFFF'
-    rads3: 'FFFFFF'
-    rads4: 'FFFFFF'
-    rads5: 'FFFFFF'
-    rads6: 'FFFFFF'
-    rads7: 'FFFFFF'
-    rads8: 'FFFFFF'
-    rads9: 'FFFFFF'
-    rads10: 'FFFFFF'
-    big_rad: 'FFFFFF'
-    cap_left: 'FFFFFF'
-    cap_center: 'FFFFFF'
-    cap_right: 'FFFFFF'
-    capin_left: 'FFFFFF'
-    capin_right: 'FFFFFF'
-    med1: 'FFFFFF'
-    med2: 'FFFFFF'
-    med3: 'FFFFFF'
-    med4: 'FFFFFF'
-    vlock1: 'FFFFFF'
-    vlock2: 'FFFFFF'
-    vlock3: 'FFFFFF'
-    vend1: 'FFFFFF'
-    vedn2: 'FFFFFF'
-    vault_boy: 'FFFFFF'
-    shoot_again: 'FFFFFF'
-    stim_left: 'FFFFFF'
-    stim_right: 'FFFFFF'
-    power1: 'FFFFFF'
-    powers: 'FFFFFF'
-    power3: 'FFFFFF'
-    power4: 'FFFFFF'
-    power5: 'FFFFFF'
-    power6: 'FFFFFF'
-    power7: 'FFFFFF'
-    power8: 'FFFFFF'
-    power9: 'FFFFFF'
-    sling_left_top: 'FFFFFF'
-    sling_left_bottom: 'FFFFFF'
-    sling_right_top: 'FFFFFF'
-    sling_right_bottom: 'FFFFFF'
+    rads1: white
+    rads2: white
+    rads3: white
+    rads4: white
+    rads5: white
+    rads6: white
+    rads7: white
+    rads8: white
+    rads9: white
+    rads10: white
+    big_rad: white
+    cap_left: white
+    cap_center: white
+    cap_right: white
+    capin_left: white
+    capin_right: white
+    med1: white
+    med2: white
+    med3: white
+    med4: white
+    vlock1: white
+    vlock2: white
+    vlock3: white
+    vend1: white
+    vedn2: white
+    vault_boy: white
+    shoot_again: white
+    stim_left: white
+    stim_right: white
+    power1: white
+    powers: white
+    power3: white
+    power4: white
+    power5: white
+    power6: white
+    power7: white
+    power8: white
+    power9: white
+    sling_left_top: white
+    sling_left_bottom: white
+    sling_right_top: white
+    sling_right_bottom: white
 - duration: 120ms
   lights:
     rads1: off
@@ -744,220 +744,220 @@
 # fallout colour wave
 - duration: 400ms
   lights:
-    rads1: 'FF0000'
-    rads2: 'FF0000'
-    rads3: 'FF0000'
-    rads4: 'FF0000'
-    rads5: 'FF0000'
-    rads6: 'FF0000'
-    rads7: 'FF0000'
-    rads8: 'FF0000'
-    rads9: 'FF0000'
-    rads10: 'FF0000'
-    big_rad: 'FF0000'
-    cap_left: 'FF0000'
-    cap_center: 'FF0000'
-    cap_right: 'FF0000'
-    capin_left: 'FF0000'
-    capin_right: 'FF0000'
-    med1: 'FF0000'
-    med2: 'FF0000'
-    med3: 'FF0000'
-    med4: 'FF0000'
-    vlock1: 'FF0000'
-    vlock2: 'FF0000'
-    vlock3: 'FF0000'
-    vend1: 'FF0000'
-    vedn2: 'FF0000'
-    vault_boy: 'FF0000'
-    shoot_again: 'FF0000'
-    stim_left: 'FF0000'
-    stim_right: 'FF0000'
-    power1: 'FF0000'
-    powers: 'FF0000'
-    power3: 'FF0000'
-    power4: 'FF0000'
-    power5: 'FF0000'
-    power6: 'FF0000'
-    power7: 'FF0000'
-    power8: 'FF0000'
-    power9: 'FF0000'
-    sling_left_top: 'FF0000'
-    sling_left_bottom: 'FF0000'
-    sling_right_top: 'FF0000'
-    sling_right_bottom: 'FF0000'
+    rads1: red
+    rads2: red
+    rads3: red
+    rads4: red
+    rads5: red
+    rads6: red
+    rads7: red
+    rads8: red
+    rads9: red
+    rads10: red
+    big_rad: red
+    cap_left: red
+    cap_center: red
+    cap_right: red
+    capin_left: red
+    capin_right: red
+    med1: red
+    med2: red
+    med3: red
+    med4: red
+    vlock1: red
+    vlock2: red
+    vlock3: red
+    vend1: red
+    vedn2: red
+    vault_boy: red
+    shoot_again: red
+    stim_left: red
+    stim_right: red
+    power1: red
+    powers: red
+    power3: red
+    power4: red
+    power5: red
+    power6: red
+    power7: red
+    power8: red
+    power9: red
+    sling_left_top: red
+    sling_left_bottom: red
+    sling_right_top: red
+    sling_right_bottom: red
 - duration: 400ms
   lights:
-    rads1: 'FFB000'
-    rads2: 'FFB000'
-    rads3: 'FFB000'
-    rads4: 'FFB000'
-    rads5: 'FFB000'
-    rads6: 'FFB000'
-    rads7: 'FFB000'
-    rads8: 'FFB000'
-    rads9: 'FFB000'
-    rads10: 'FFB000'
-    big_rad: 'FFB000'
-    cap_left: 'FFB000'
-    cap_center: 'FFB000'
-    cap_right: 'FFB000'
-    capin_left: 'FFB000'
-    capin_right: 'FFB000'
-    med1: 'FFB000'
-    med2: 'FFB000'
-    med3: 'FFB000'
-    med4: 'FFB000'
-    vlock1: 'FFB000'
-    vlock2: 'FFB000'
-    vlock3: 'FFB000'
-    vend1: 'FFB000'
-    vedn2: 'FFB000'
-    vault_boy: 'FFB000'
-    shoot_again: 'FFB000'
-    stim_left: 'FFB000'
-    stim_right: 'FFB000'
-    power1: 'FFB000'
-    powers: 'FFB000'
-    power3: 'FFB000'
-    power4: 'FFB000'
-    power5: 'FFB000'
-    power6: 'FFB000'
-    power7: 'FFB000'
-    power8: 'FFB000'
-    power9: 'FFB000'
-    sling_left_top: 'FFB000'
-    sling_left_bottom: 'FFB000'
-    sling_right_top: 'FFB000'
-    sling_right_bottom: 'FFB000'
+    rads1: orange
+    rads2: orange
+    rads3: orange
+    rads4: orange
+    rads5: orange
+    rads6: orange
+    rads7: orange
+    rads8: orange
+    rads9: orange
+    rads10: orange
+    big_rad: orange
+    cap_left: orange
+    cap_center: orange
+    cap_right: orange
+    capin_left: orange
+    capin_right: orange
+    med1: orange
+    med2: orange
+    med3: orange
+    med4: orange
+    vlock1: orange
+    vlock2: orange
+    vlock3: orange
+    vend1: orange
+    vedn2: orange
+    vault_boy: orange
+    shoot_again: orange
+    stim_left: orange
+    stim_right: orange
+    power1: orange
+    powers: orange
+    power3: orange
+    power4: orange
+    power5: orange
+    power6: orange
+    power7: orange
+    power8: orange
+    power9: orange
+    sling_left_top: orange
+    sling_left_bottom: orange
+    sling_right_top: orange
+    sling_right_bottom: orange
 - duration: 400ms
   lights:
-    rads1: 'FFFF00'
-    rads2: 'FFFF00'
-    rads3: 'FFFF00'
-    rads4: 'FFFF00'
-    rads5: 'FFFF00'
-    rads6: 'FFFF00'
-    rads7: 'FFFF00'
-    rads8: 'FFFF00'
-    rads9: 'FFFF00'
-    rads10: 'FFFF00'
-    big_rad: 'FFFF00'
-    cap_left: 'FFFF00'
-    cap_center: 'FFFF00'
-    cap_right: 'FFFF00'
-    capin_left: 'FFFF00'
-    capin_right: 'FFFF00'
-    med1: 'FFFF00'
-    med2: 'FFFF00'
-    med3: 'FFFF00'
-    med4: 'FFFF00'
-    vlock1: 'FFFF00'
-    vlock2: 'FFFF00'
-    vlock3: 'FFFF00'
-    vend1: 'FFFF00'
-    vedn2: 'FFFF00'
-    vault_boy: 'FFFF00'
-    shoot_again: 'FFFF00'
-    stim_left: 'FFFF00'
-    stim_right: 'FFFF00'
-    power1: 'FFFF00'
-    powers: 'FFFF00'
-    power3: 'FFFF00'
-    power4: 'FFFF00'
-    power5: 'FFFF00'
-    power6: 'FFFF00'
-    power7: 'FFFF00'
-    power8: 'FFFF00'
-    power9: 'FFFF00'
-    sling_left_top: 'FFFF00'
-    sling_left_bottom: 'FFFF00'
-    sling_right_top: 'FFFF00'
-    sling_right_bottom: 'FFFF00'
+    rads1: yellow
+    rads2: yellow
+    rads3: yellow
+    rads4: yellow
+    rads5: yellow
+    rads6: yellow
+    rads7: yellow
+    rads8: yellow
+    rads9: yellow
+    rads10: yellow
+    big_rad: yellow
+    cap_left: yellow
+    cap_center: yellow
+    cap_right: yellow
+    capin_left: yellow
+    capin_right: yellow
+    med1: yellow
+    med2: yellow
+    med3: yellow
+    med4: yellow
+    vlock1: yellow
+    vlock2: yellow
+    vlock3: yellow
+    vend1: yellow
+    vedn2: yellow
+    vault_boy: yellow
+    shoot_again: yellow
+    stim_left: yellow
+    stim_right: yellow
+    power1: yellow
+    powers: yellow
+    power3: yellow
+    power4: yellow
+    power5: yellow
+    power6: yellow
+    power7: yellow
+    power8: yellow
+    power9: yellow
+    sling_left_top: yellow
+    sling_left_bottom: yellow
+    sling_right_top: yellow
+    sling_right_bottom: yellow
 - duration: 400ms
   lights:
-    rads1: '00FF00'
-    rads2: '00FF00'
-    rads3: '00FF00'
-    rads4: '00FF00'
-    rads5: '00FF00'
-    rads6: '00FF00'
-    rads7: '00FF00'
-    rads8: '00FF00'
-    rads9: '00FF00'
-    rads10: '00FF00'
-    big_rad: '00FF00'
-    cap_left: '00FF00'
-    cap_center: '00FF00'
-    cap_right: '00FF00'
-    capin_left: '00FF00'
-    capin_right: '00FF00'
-    med1: '00FF00'
-    med2: '00FF00'
-    med3: '00FF00'
-    med4: '00FF00'
-    vlock1: '00FF00'
-    vlock2: '00FF00'
-    vlock3: '00FF00'
-    vend1: '00FF00'
-    vedn2: '00FF00'
-    vault_boy: '00FF00'
-    shoot_again: '00FF00'
-    stim_left: '00FF00'
-    stim_right: '00FF00'
-    power1: '00FF00'
-    powers: '00FF00'
-    power3: '00FF00'
-    power4: '00FF00'
-    power5: '00FF00'
-    power6: '00FF00'
-    power7: '00FF00'
-    power8: '00FF00'
-    power9: '00FF00'
-    sling_left_top: '00FF00'
-    sling_left_bottom: '00FF00'
-    sling_right_top: '00FF00'
-    sling_right_bottom: '00FF00'
+    rads1: lime
+    rads2: lime
+    rads3: lime
+    rads4: lime
+    rads5: lime
+    rads6: lime
+    rads7: lime
+    rads8: lime
+    rads9: lime
+    rads10: lime
+    big_rad: lime
+    cap_left: lime
+    cap_center: lime
+    cap_right: lime
+    capin_left: lime
+    capin_right: lime
+    med1: lime
+    med2: lime
+    med3: lime
+    med4: lime
+    vlock1: lime
+    vlock2: lime
+    vlock3: lime
+    vend1: lime
+    vedn2: lime
+    vault_boy: lime
+    shoot_again: lime
+    stim_left: lime
+    stim_right: lime
+    power1: lime
+    powers: lime
+    power3: lime
+    power4: lime
+    power5: lime
+    power6: lime
+    power7: lime
+    power8: lime
+    power9: lime
+    sling_left_top: lime
+    sling_left_bottom: lime
+    sling_right_top: lime
+    sling_right_bottom: lime
 # Rest: steady attract colours
 - duration: 3000ms
   lights:
-    rads1: 'BA0000'
-    rads2: 'BA0000'
-    rads3: 'BA0000'
-    rads4: 'BA0000'
-    rads5: 'BA0000'
-    rads6: 'BA0000'
-    rads7: 'BA0000'
-    rads8: 'BA0000'
-    rads9: 'BA0000'
-    rads10: 'BA0000'
-    cap_left: 'FFFFFF'
-    cap_center: 'FFFFFF'
-    cap_right: 'FFFFFF'
-    capin_left: 'FFFFFF'
-    capin_right: 'FFFFFF'
-    med1: '8000FF'
-    med2: '8000FF'
-    med3: '8000FF'
-    med4: '8000FF'
-    big_rad: 'FF0000'
-    stim_left: 'BA0000'
-    stim_right: 'BA0000'
-    vend1: 'FFB000'
-    vedn2: 'FFB000'
-    vlock1: 'FF0000'
-    vlock2: 'FFFF00'
-    power1: 'FFFF00'
-    powers: 'FFFF00'
-    power3: 'FFFF00'
-    power4: 'FFFF00'
-    power5: 'FFFF00'
-    power6: 'FFFF00'
-    power7: 'FFFF00'
-    power8: 'FFFF00'
-    power9: 'FFFF00'
-    vault_boy: '00D5FF'
-    sling_left_top: 'FFFF00'
-    sling_left_bottom: 'FFFF00'
-    sling_right_top: 'FFFF00'
-    sling_right_bottom: 'FFFF00'
+    rads1: darkred
+    rads2: darkred
+    rads3: darkred
+    rads4: darkred
+    rads5: darkred
+    rads6: darkred
+    rads7: darkred
+    rads8: darkred
+    rads9: darkred
+    rads10: darkred
+    cap_left: white
+    cap_center: white
+    cap_right: white
+    capin_left: white
+    capin_right: white
+    med1: purple
+    med2: purple
+    med3: purple
+    med4: purple
+    big_rad: red
+    stim_left: darkred
+    stim_right: darkred
+    vend1: sandybrown
+    vedn2: sandybrown
+    vlock1: red
+    vlock2: yellow
+    power1: yellow
+    powers: yellow
+    power3: yellow
+    power4: yellow
+    power5: yellow
+    power6: yellow
+    power7: yellow
+    power8: yellow
+    power9: yellow
+    vault_boy: deepskyblue
+    sling_left_top: yellow
+    sling_left_bottom: yellow
+    sling_right_top: yellow
+    sling_right_bottom: yellow
