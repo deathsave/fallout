@@ -328,8 +328,7 @@ ball_devices:
     bd_lock:
         ball_switches: s_lock1, s_lock2, s_lock3
         eject_coil: c_lock
-        eject_all_events: multiball_vault_multiball_started
-#        eject_timeouts: 1s
+        # vault_multiball (modes/base) ejects the locked balls itself
 
 counters:
     mb_counter:

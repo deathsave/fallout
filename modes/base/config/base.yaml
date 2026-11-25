@@ -24,7 +24,6 @@ light_player:
         rads: green
         meds: off
         caps: off
-        vlock: off
         vend: off
         big_rad: off
         stims: off
@@ -54,6 +53,24 @@ light_player:
         rad10: red
     rads_level0:
         rads: green
+
+    # Vault lock lights: one lit per ball in the vault, chase in multiball
+    mode_base_started{device.ball_devices.bd_lock.balls==0}:
+        vlock: off
+    mode_base_started{device.ball_devices.bd_lock.balls==1}:
+        vlock1: red
+        vlock2: off
+        vlock3: off
+    mode_base_started{device.ball_devices.bd_lock.balls>=2}:
+        vlock1: red
+        vlock2: ffff00
+        vlock3: off
+    multiball_lock_v_lock_locked_ball{total_balls_locked==1}:
+        vlock1: red
+    multiball_lock_v_lock_locked_ball{total_balls_locked==2}:
+        vlock2: ffff00
+    multiball_vault_multiball_ended:
+        vlock: off
 
 
 variable_player:
@@ -231,26 +248,27 @@ multiballs:
         ball_count: 3
         ball_count_type: total
         shoot_again: 10s
+        # Release the balls held in the vault. The 3rd locked ball is still
+        # counted as in play, so replace it too or one ball stays locked.
+        ball_locks: bd_lock
+        replace_balls_in_play: true
         start_events: multiball_lock_v_lock_full
-#    release_all_locked_balls:
-#        ball_count: current_player.lock_mb6_locked_balls
-#        ball_count_type: add
-#        shoot_again: 20s
-#        start_events: multiball_lock_v_lock_full
-#        ball_locks: bd_lock
-#        replace_balls_in_play: true
-#        balls_to_replace: 2
-
 
 multiball_locks:
     v_lock:
         balls_to_lock: 3
         lock_devices: bd_lock
-        locked_ball_counting_strategy: no_virtual
-        enable_events: mode_base_started
-#        disable_events: multiball_lock_v_lock_full
-#        replace_balls_in_play: true
-#        balls_to_replace: 2
+        # Count the balls physically in the vault, so locks carry over from
+        # ball to ball (and player to player).
+        locked_ball_counting_strategy: physical_only
+        # Only 3 balls in the machine: replace the first 2 locked balls with
+        # new ones from the trough; the 3rd lock starts the multiball.
+        balls_to_replace: 2
+        # Off during the multiball (balls entering the vault are kicked
+        # back out), back on for the next one.
+        enable_events: mode_base_started, multiball_vault_multiball_ended
+        disable_events: multiball_lock_v_lock_full
+
 state_machines:
     rad_meter_status:
         persist_state: true #so this will hold state across balls
@@ -563,6 +581,22 @@ shows:
               helmet:
                   color: ffff00
                   fade: 20ms
+    vault_multiball_show:
+        - duration: 150ms
+          lights:
+              vlock1: red
+              vlock2: off
+              vlock3: off
+        - duration: 150ms
+          lights:
+              vlock1: off
+              vlock2: ffff00
+              vlock3: off
+        - duration: 150ms
+          lights:
+              vlock1: off
+              vlock2: off
+              vlock3: lime
     vault_boy_flash:
         - time: +10ms
           lights:
@@ -584,6 +618,14 @@ shows:
 
 
 show_player:
+    multiball_vault_multiball_started:
+        vault_multiball_show:
+            action: play
+            loops: -1
+            priority: 10
+    multiball_vault_multiball_ended:
+        vault_multiball_show:
+            action: stop
     rad_spin_hit:
         helmet_flash:
             action: play
