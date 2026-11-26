@@ -23,7 +23,6 @@ anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
 [node name="Nuke" type="TextureRect" parent="."]
-z_index = 1
 layout_mode = 0
 offset_left = -496.0
 offset_top = -276.0
@@ -34,7 +33,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="FalloutUi" type="TextureRect" parent="."]
-z_index = 5
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
@@ -45,7 +43,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Score" type="Label" parent="."]
-z_index = 10
 layout_mode = 0
 offset_left = -200.0
 offset_top = 8.0
@@ -64,7 +61,6 @@ comma_separate = true
 min_digits = 2
 
 [node name="PlayerNumber" type="Label" parent="."]
-z_index = 10
 layout_mode = 0
 offset_left = 20.0
 offset_top = 0.0
@@ -82,7 +78,6 @@ variable_name = "number"
 template_string = "PLAYER %s"
 
 [node name="Ball" type="Label" parent="."]
-z_index = 10
 layout_mode = 0
 offset_left = 20.0
 offset_top = 100.0

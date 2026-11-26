@@ -252,6 +252,11 @@ sound_player:
     mode_base_stopped:
         base_end:
             action: play
+    # VATS (modes/vats) stops itself on this event, so play it from here
+    vats_shots_hit_complete:
+        voicy_objective_completed:
+            action: play
+            bus: voice
 
 
 

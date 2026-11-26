@@ -21,7 +21,6 @@ anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 360.0
 offset_top = 36.0
@@ -36,7 +35,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label1" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 250.0
@@ -53,7 +51,6 @@ variable_type = 2
 variable_name = "score1_label"
 
 [node name="Name1" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 250.0
@@ -70,7 +67,6 @@ variable_type = 2
 variable_name = "score1_name"
 
 [node name="Value1" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 250.0
@@ -89,7 +85,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label2" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 330.0
@@ -106,7 +101,6 @@ variable_type = 2
 variable_name = "score2_label"
 
 [node name="Name2" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 330.0
@@ -123,7 +117,6 @@ variable_type = 2
 variable_name = "score2_name"
 
 [node name="Value2" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 330.0
@@ -142,7 +135,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label3" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 380.0
@@ -159,7 +151,6 @@ variable_type = 2
 variable_name = "score3_label"
 
 [node name="Name3" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 380.0
@@ -176,7 +167,6 @@ variable_type = 2
 variable_name = "score3_name"
 
 [node name="Value3" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 380.0
@@ -195,7 +185,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label4" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 430.0
@@ -212,7 +201,6 @@ variable_type = 2
 variable_name = "score4_label"
 
 [node name="Name4" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 430.0
@@ -229,7 +217,6 @@ variable_type = 2
 variable_name = "score4_name"
 
 [node name="Value4" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 430.0
@@ -248,7 +235,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label5" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 480.0
@@ -265,7 +251,6 @@ variable_type = 2
 variable_name = "score5_label"
 
 [node name="Name5" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 480.0
@@ -282,7 +267,6 @@ variable_type = 2
 variable_name = "score5_name"
 
 [node name="Value5" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 480.0
@@ -301,7 +285,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label6" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 530.0
@@ -318,7 +301,6 @@ variable_type = 2
 variable_name = "score6_label"
 
 [node name="Name6" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 530.0
@@ -335,7 +317,6 @@ variable_type = 2
 variable_name = "score6_name"
 
 [node name="Value6" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 530.0
@@ -354,7 +335,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label7" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 580.0
@@ -371,7 +351,6 @@ variable_type = 2
 variable_name = "score7_label"
 
 [node name="Name7" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 580.0
@@ -388,7 +367,6 @@ variable_type = 2
 variable_name = "score7_name"
 
 [node name="Value7" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 580.0
@@ -407,7 +385,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label8" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 630.0
@@ -424,7 +401,6 @@ variable_type = 2
 variable_name = "score8_label"
 
 [node name="Name8" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 630.0
@@ -441,7 +417,6 @@ variable_type = 2
 variable_name = "score8_name"
 
 [node name="Value8" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 630.0
@@ -460,7 +435,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Label9" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 50.0
 offset_top = 680.0
@@ -477,7 +451,6 @@ variable_type = 2
 variable_name = "score9_label"
 
 [node name="Name9" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 860.0
 offset_top = 680.0
@@ -494,7 +467,6 @@ variable_type = 2
 variable_name = "score9_name"
 
 [node name="Value9" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1200.0
 offset_top = 680.0

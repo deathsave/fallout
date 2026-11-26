@@ -9,7 +9,6 @@ layout_mode = 3
 script = ExtResource("1")
 
 [node name="Score" type="Label" parent="."]
-z_index = 10
 layout_mode = 0
 offset_left = 500.0
 offset_top = 108.0

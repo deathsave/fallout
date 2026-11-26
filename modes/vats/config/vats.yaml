@@ -1,0 +1,151 @@
+#config_version=6
+##! mode: vats
+#
+# V.A.T.S. - knock down all three VATS drop targets to start a 30 second
+# shot hunt. Four shots are targeted: both ramps, the center ramp and the
+# scoop. Each targeted shot scores once; hitting all four ends the mode
+# early with a completion bonus. The drop targets reset when it ends.
+
+mode:
+    start_events: drop_target_bank_vats_down
+    stop_events: timer_vats_timer_complete, vats_shots_hit_complete
+    priority: 200
+
+timers:
+    vats_timer:
+        start_value: 30
+        end_value: 0
+        direction: down
+        start_running: true
+        bcp: true
+
+# The playfield has no shot arrows, so targeted shots don't light anything
+# themselves; the display shows how many are left.
+shot_profiles:
+    vats_target:
+        states:
+            - name: targeted
+            - name: hit
+        loop: false
+
+shots:
+    vats_left_ramp:
+        switch: s_left_ramp
+        profile: vats_target
+    vats_center_ramp:
+        switch: s_center_ramp
+        profile: vats_target
+    vats_right_ramp:
+        switch: s_right_ramp
+        profile: vats_target
+    vats_scoop:
+        switch: s_scoop
+        profile: vats_target
+
+shot_groups:
+    vats_shots:
+        shots: vats_left_ramp, vats_center_ramp, vats_right_ramp, vats_scoop
+
+variable_player:
+    mode_vats_started:
+        vats_hits:
+            action: set
+            int: 0
+    vats_left_ramp_targeted_hit:
+        score: 10000
+        vats_hits: 1
+    vats_center_ramp_targeted_hit:
+        score: 10000
+        vats_hits: 1
+    vats_right_ramp_targeted_hit:
+        score: 10000
+        vats_hits: 1
+    vats_scoop_targeted_hit:
+        score: 10000
+        vats_hits: 1
+    vats_shots_hit_complete:
+        score: 50000
+
+slide_player:
+    mode_vats_started: vats_slide
+
+sound_player:
+    mode_vats_started:
+        voicy_quest_start:
+            action: play
+            bus: voice
+    vats_shots_hit:
+        objective:
+            action: play
+            bus: sfx
+    # (completion sound is in base mode: this mode stops on that event)
+
+show_player:
+    mode_vats_started:
+        vats_helmet_show:
+            action: play
+            loops: -1
+    vats_shots_hit:
+        vats_hit_flash:
+            action: play
+            loops: 0
+
+shows:
+    # Pip-Boy green sweep across the power armor helmet while VATS runs
+    vats_helmet_show:
+        - duration: 100ms
+          lights:
+              power1: lime
+              powers: off
+              power3: off
+              power4: off
+              power5: off
+              power6: off
+              power7: off
+              power8: off
+              power9: off
+        - duration: 100ms
+          lights:
+              power1: off
+              powers: lime
+        - duration: 100ms
+          lights:
+              powers: off
+              power3: lime
+        - duration: 100ms
+          lights:
+              power3: off
+              power4: lime
+        - duration: 100ms
+          lights:
+              power4: off
+              power5: lime
+        - duration: 100ms
+          lights:
+              power5: off
+              power6: lime
+        - duration: 100ms
+          lights:
+              power6: off
+              power7: lime
+        - duration: 100ms
+          lights:
+              power7: off
+              power8: lime
+        - duration: 100ms
+          lights:
+              power8: off
+              power9: lime
+    vats_hit_flash:
+        - duration: 100ms
+          lights:
+              vault_boy: lime
+        - duration: 100ms
+          lights:
+              vault_boy: off
+        - duration: 100ms
+          lights:
+              vault_boy: lime
+        - duration: 100ms
+          lights:
+              vault_boy: off

@@ -21,7 +21,6 @@ anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 360.0
 offset_top = 36.0
@@ -36,7 +35,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player1" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 680.0
 offset_top = 250.0
@@ -52,7 +50,6 @@ horizontal_alignment = 1
 vertical_alignment = 0
 
 [node name="Player1Score" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1020.0
 offset_top = 250.0
@@ -71,7 +68,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Player2" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 680.0
 offset_top = 320.0
@@ -87,7 +83,6 @@ horizontal_alignment = 1
 vertical_alignment = 0
 
 [node name="Player2Score" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1020.0
 offset_top = 320.0
@@ -106,7 +101,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Player3" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 680.0
 offset_top = 390.0
@@ -122,7 +116,6 @@ horizontal_alignment = 1
 vertical_alignment = 0
 
 [node name="Player3Score" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1020.0
 offset_top = 390.0
@@ -141,7 +134,6 @@ comma_separate = true
 min_digits = 1
 
 [node name="Player4" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 680.0
 offset_top = 460.0
@@ -157,7 +149,6 @@ horizontal_alignment = 1
 vertical_alignment = 0
 
 [node name="Player4Score" type="Label" parent="."]
-z_index = 0
 layout_mode = 0
 offset_left = 1020.0
 offset_top = 460.0

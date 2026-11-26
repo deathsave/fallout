@@ -256,6 +256,14 @@ switches:
     s_lock3:
         number: 0804-6
         type: 'NC'
+    # TODO(vats): placeholder numbers - the VATS drop targets aren't wired
+    # yet. Set these to the real inputs once they are (3208-20..22 are free).
+    s_vats1:
+        number: 3208-20
+    s_vats2:
+        number: 3208-21
+    s_vats3:
+        number: 3208-22
 spinners:
     basic_spinner:
        switch: s_rspinner, s_lspinner, s_cspinner
@@ -292,6 +300,11 @@ coils:
     c_lock:
         number: 3208-2
         default_pulse_ms: 22
+    # TODO(vats): placeholder driver for the VATS drop target reset - set the
+    # real output (and pulse time) once it's wired. 0804-1 is free today.
+    c_vats_reset:
+        number: 0804-1
+        default_pulse_ms: 30
     c_uv:
         number: 0804-0
         allow_enable: true
@@ -329,6 +342,21 @@ ball_devices:
         ball_switches: s_lock1, s_lock2, s_lock3
         eject_coil: c_lock
         # vault_multiball (modes/base) ejects the locked balls itself
+
+drop_targets:
+    vats1:
+        switch: s_vats1
+    vats2:
+        switch: s_vats2
+    vats3:
+        switch: s_vats3
+
+drop_target_banks:
+    vats:
+        drop_targets: vats1, vats2, vats3
+        reset_coils: c_vats_reset
+        # back up for each ball and when the VATS mode ends
+        reset_events: machine_reset_phase_3, ball_starting, mode_vats_stopped
 
 counters:
     mb_counter:
@@ -401,6 +429,7 @@ player_vars:
 
 modes:
     - base
+    - vats
 #    - bonus
     - high_score
     - attract
