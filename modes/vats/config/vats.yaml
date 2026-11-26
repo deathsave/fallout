@@ -5,11 +5,24 @@
 # shot hunt. Four shots are targeted: both ramps, the center ramp and the
 # scoop. Each targeted shot scores once; hitting all four ends the mode
 # early with a completion bonus. The drop targets reset when it ends.
+# Every drain is saved while VATS runs.
 
 mode:
     start_events: drop_target_bank_vats_down
     stop_events: timer_vats_timer_complete, vats_shots_hit_complete
     priority: 200
+
+# Saves every drain for as long as VATS runs (switches off when the mode
+# ends). The stim pack is paused meanwhile - see stim_pack in base.yaml.
+ball_saves:
+    vats_ball_save:
+        active_time: 0          # no time limit: the mode ending disables it
+        balls_to_save: -1       # unlimited
+        auto_launch: true
+
+light_player:
+    ball_save_vats_ball_save_enabled:
+        shoot_again: lime
 
 timers:
     vats_timer:

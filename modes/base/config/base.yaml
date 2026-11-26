@@ -20,9 +20,13 @@ ball_saves:
         balls_to_save: 1
         only_last_ball: true
         auto_launch: true
+        # Paused during VATS (which saves every drain itself) so it isn't
+        # used up there; back on afterwards if the meter is still full.
         enable_events:
-            - med_meter_full{not device.ball_saves.ball_start_ball_save.enabled}
-            - ball_save_ball_start_ball_save_disabled{current_player.state_machine_med_meter_status=="med5"}
+            - med_meter_full{not device.ball_saves.ball_start_ball_save.enabled and not mode.vats.active}
+            - ball_save_ball_start_ball_save_disabled{current_player.state_machine_med_meter_status=="med5" and not mode.vats.active}
+            - mode_vats_stopped{current_player.state_machine_med_meter_status=="med5" and not device.ball_saves.ball_start_ball_save.enabled}
+        disable_events: ball_will_end, service_mode_entered, mode_vats_started
 
 
 slide_player:

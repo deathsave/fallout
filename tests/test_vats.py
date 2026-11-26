@@ -80,13 +80,51 @@ class TestVats(BallHelpers):
         self.advance_time_and_run(1)
         self.assertFalse(self.bank().complete)
 
-    def test_ball_end_stops_vats(self):
+    def test_every_drain_saved_during_vats(self):
         self.start_game_and_plunge()
         self.advance_time_and_run(15)     # ball start save over
         self.drop_all()
-        self.assertModeRunning('vats')
+        self.assertTrue(self.machine.ball_saves.vats_ball_save.enabled)
+        self.assertLightColor('shoot_again', 'lime')
+        for _ in range(2):
+            self.drain_ball()
+            self.advance_time_and_run(5)
+            self.assertEqual(1, self.machine.game.player.ball)
+            self.assertEqual(1, self.machine.game.balls_in_play)
+            self.assertModeRunning('vats')
+            self.release_switch_and_run('s_shooter_lane', 1)
+
+    def test_drain_after_vats_ends_the_ball(self):
+        self.start_game_and_plunge()
+        self.advance_time_and_run(15)
+        self.drop_all()
+        self.advance_time_and_run(31)     # VATS timer runs out
+        self.assertModeNotRunning('vats')
+        self.assertFalse(self.machine.ball_saves.vats_ball_save.enabled)
+        self.assertLightColor('shoot_again', 'off')
         self.drain_ball()
         self.advance_time_and_run(5)
-        self.assertModeNotRunning('vats')
         self.assertEqual(2, self.machine.game.player.ball)
         self.assertFalse(self.bank().complete)
+
+    def test_stim_pack_paused_during_vats(self):
+        self.start_game_and_plunge()
+        self.advance_time_and_run(15)
+        for _ in range(5):                # fill the med meter
+            self.post_event('logicblock_med_spin_sequence_complete')
+            self.advance_time_and_run(.1)
+        stim = self.machine.ball_saves.stim_pack
+        self.assertTrue(stim.enabled)
+
+        self.drop_all()
+        self.assertFalse(stim.enabled, "VATS covers drains, stim pack waits")
+        self.drain_ball()
+        self.advance_time_and_run(5)
+        self.assertEqual('med5', self.machine.state_machines.med_meter_status.state,
+                         "a VATS save doesn't use up the stim pack")
+        self.release_switch_and_run('s_shooter_lane', 1)
+
+        self.advance_time_and_run(31)     # VATS over: stim pack back
+        self.assertModeNotRunning('vats')
+        self.assertTrue(stim.enabled)
+        self.assertLightColor('stim_left', 'red')
