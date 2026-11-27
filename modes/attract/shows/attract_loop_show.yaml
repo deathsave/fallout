@@ -54,6 +54,7 @@
           vault_boy: off
       coils:
           c_uv: off
+          c_rdial: off
     - time: "+3"
       lights:
           rads: BA0000
@@ -106,6 +107,7 @@
 
       coils:
           c_uv: on
+          c_rdial: on
 
     - time: "+3"
       lights:

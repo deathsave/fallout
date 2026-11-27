@@ -389,10 +389,19 @@ coils:
     c_3bank:
         number: 0804-2
         default_pulse_ms: 16
+    c_rdial:                # rad dial: fires whenever c_uv does
+        number: 0804-3
+        allow_enable: true
+        default_pulse_ms: 25
+        max_pulse_power: 1
+        max_pulse_ms: 1000
 
 coil_player:
     mode_attract_started:
         c_uv:
+            action: enable
+            hold_power: 1
+        c_rdial:
             action: enable
             hold_power: 1
 
@@ -463,6 +472,9 @@ autofire_coils:
         switch: s_right_sling
     ac_uv:
         coil: c_uv
+        switch: s_rspinner
+    ac_rdial:
+        coil: c_rdial
         switch: s_rspinner
 
 playfields:
