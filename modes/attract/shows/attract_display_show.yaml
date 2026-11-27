@@ -2,20 +2,47 @@
 ##! show: attract_display_show
 # MPF 0.80: slides are Godot scenes in slides/ (GMC). Shows only
 # reference them by name; inline widget definitions are not allowed.
+#
+# GMC ignores "play" for a slide that is already on the stack, and show
+# steps don't take their slides away, so each step removes the slide
+# before it. Without that, nothing changes when the show loops back to
+# attract_slide1 and attract_slide3 stays up forever.
     - time: "+.3"
-      slides: attract_slide1
+      slides:
+        attract_slide1:
+          action: play
+        attract_slide3:          # left over from the previous loop
+          action: remove
     - time: "+5"
       slides:
         dspc_animation_slide:
           action: play
+        attract_slide1:
+          action: remove
     - time: "+7"
-      slides: show_final_scores
+      slides:
+        show_final_scores:
+          action: play
+        dspc_animation_slide:
+          action: remove
     - time: "+5"
-      slides: attract_slide2
+      slides:
+        attract_slide2:
+          action: play
+        show_final_scores:
+          action: remove
     - time: "+5"
-      slides: show_high_scores
+      slides:
+        show_high_scores:
+          action: play
+        attract_slide2:
+          action: remove
     - time: "+5"
-      slides: attract_slide3
+      slides:
+        attract_slide3:
+          action: play
+        show_high_scores:
+          action: remove
     - time: "+5"
       lights:
           caps: off
