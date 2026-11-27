@@ -70,6 +70,35 @@ class TestVats(BallHelpers):
         self.post_event('vats_light_cross{}'.format(n))
         self.advance_time_and_run(.1)
 
+    def letter(self, l):
+        return self.machine.game.player['vats_letter_' + l]
+
+    def test_vats_inserts_white_up_green_down(self):
+        self.start_game_and_plunge()
+        for l in 'vats':
+            self.assertLightColor(l, 'white')
+            self.assertEqual('', self.letter(l) or '')
+        self.drop('v')
+        self.assertLightColor('v', 'green')
+        self.assertEqual('V', self.letter('v'))
+        for l in 'ats':
+            self.assertLightColor(l, 'white')
+        self.drop('a')
+        self.drop('t')
+        self.assertLightColor('a', 'green')
+        self.assertLightColor('t', 'green')
+        self.assertEqual('T', self.letter('t'))
+        self.assertLightColor('s', 'white')
+        self.drop('s')                    # VATS starts
+        for l in 'vats':
+            self.assertLightColor(l, 'green')
+            self.assertEqual(l.upper(), self.letter(l))
+        self.advance_time_and_run(31)     # VATS ends: bank resets
+        self.assertModeNotRunning('vats')
+        for l in 'vats':
+            self.assertLightColor(l, 'white')
+            self.assertEqual('', self.letter(l))
+
     def test_all_four_drops_start_vats(self):
         self.start_game_and_plunge()
         self.drop('v')

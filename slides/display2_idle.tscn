@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_slide.gd" id="1"]
 [ext_resource type="FontFile" path="res://fonts/Wideg.ttf" id="2"]
+[ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_variable.gd" id="3"]
 
 [node name="display2_idle" type="Control"]
 layout_mode = 3
@@ -57,3 +58,116 @@ theme_override_font_sizes/font_size = 36
 text = "KNOCK DOWN V-A-T-S"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+
+[node name="DimV" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 820.0
+offset_right = 660.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0, 0.18, 0.04, 1)
+text = "V"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitV" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 820.0
+offset_right = 660.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3")
+variable_name = "vats_letter_v"
+
+[node name="DimA" type="Label" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 820.0
+offset_right = 940.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0, 0.18, 0.04, 1)
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitA" type="Label" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 820.0
+offset_right = 940.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3")
+variable_name = "vats_letter_a"
+
+[node name="DimT" type="Label" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 820.0
+offset_right = 1220.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0, 0.18, 0.04, 1)
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitT" type="Label" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 820.0
+offset_right = 1220.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3")
+variable_name = "vats_letter_t"
+
+[node name="DimS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1260.0
+offset_top = 820.0
+offset_right = 1500.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0, 0.18, 0.04, 1)
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1260.0
+offset_top = 820.0
+offset_right = 1500.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 180
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3")
+variable_name = "vats_letter_s"

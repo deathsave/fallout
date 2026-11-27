@@ -58,8 +58,26 @@ light_player:
         helmet: ffff00
         vault_boy: off
         slings: yellow
-        vats: off
+        vats: white             # V-A-T-S drop targets up
         crosshairs: off
+
+    # each V-A-T-S insert turns green while its drop target is down
+    drop_target_v_down:
+        v: green
+    drop_target_v_up:
+        v: white
+    drop_target_a_down:
+        a: green
+    drop_target_a_up:
+        a: white
+    drop_target_t_down:
+        t: green
+    drop_target_t_up:
+        t: white
+    drop_target_s_down:
+        s: green
+    drop_target_s_up:
+        s: white
 
     rads_level1:
         rad1: red
@@ -124,6 +142,39 @@ light_player:
 
 
 variable_player:
+    # V-A-T-S letters shown on display 2 (display2_idle) as targets drop
+    drop_target_v_down:
+        vats_letter_v:
+            action: set
+            string: V
+    drop_target_v_up:
+        vats_letter_v:
+            action: set
+            string: ""
+    drop_target_a_down:
+        vats_letter_a:
+            action: set
+            string: A
+    drop_target_a_up:
+        vats_letter_a:
+            action: set
+            string: ""
+    drop_target_t_down:
+        vats_letter_t:
+            action: set
+            string: T
+    drop_target_t_up:
+        vats_letter_t:
+            action: set
+            string: ""
+    drop_target_s_down:
+        vats_letter_s:
+            action: set
+            string: S
+    drop_target_s_up:
+        vats_letter_s:
+            action: set
+            string: ""
     s_rspinner_active:
         score: 100
     s_lspinner_active:
