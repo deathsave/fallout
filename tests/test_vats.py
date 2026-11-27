@@ -1,5 +1,7 @@
 """Tests the VATS drop targets and the VATS shot hunt mode."""
 
+from mpf.core.rgb_color import RGBColor
+
 from tests.test_vault_multiball import BallHelpers
 
 
@@ -21,14 +23,52 @@ class TestVats(BallHelpers):
     def bank(self):
         return self.machine.drop_target_banks.vats
 
-    def hit_ramp(self, switch):
-        self.hit_and_release_switch(switch)
-        self.advance_time_and_run(.5)
+    # crosshair insert number -> how to make that shot in the simulator
+    SHOTS = {
+        1: 's_lspinner',
+        2: 's_left_ramp',
+        3: 'bd_lock',
+        4: 's_center_ramp',
+        5: 'bd_scoop',
+        6: 's_right_ramp',
+        7: 's_rspinner',
+    }
 
-    def hit_scoop(self):
-        self.machine.default_platform.add_ball_to_device(
-            self.machine.ball_devices.bd_scoop)
-        self.advance_time_and_run(3)
+    def make_shot(self, switch_or_device):
+        if switch_or_device.startswith('bd_'):
+            self.machine.default_platform.add_ball_to_device(
+                self.machine.ball_devices[switch_or_device])
+            self.advance_time_and_run(3)
+        else:
+            self.hit_and_release_switch(switch_or_device)
+            self.advance_time_and_run(.5)
+
+    def lit(self):
+        """Crosshair numbers whose insert is red."""
+        red = RGBColor('red')
+        return [n for n in range(1, 8)
+                if self.machine.lights['cross{}'.format(n)].get_color() == red]
+
+    def lit_one(self):
+        lit = self.lit()
+        self.assertEqual(1, len(lit), "exactly one crosshair is lit")
+        return lit[0]
+
+    def hit_lit(self):
+        """Hit the lit crosshair's shot directly (no base-mode scoring)."""
+        n = self.lit_one()
+        shot = [s for s in self.machine.shots
+                if s.name.startswith('vats_') and s.enabled][0]
+        shot.hit()
+        self.advance_time_and_run(.1)
+        return n
+
+    def light_only(self, n):
+        for shot in self.machine.shots:
+            if shot.name.startswith('vats_'):
+                shot.disable()
+        self.post_event('vats_light_cross{}'.format(n))
+        self.advance_time_and_run(.1)
 
     def test_all_four_drops_start_vats(self):
         self.start_game_and_plunge()
@@ -36,48 +76,89 @@ class TestVats(BallHelpers):
         self.drop('a')
         self.drop('t')
         self.assertModeNotRunning('vats')
+        self.assertEqual([], self.lit())
         self.drop('s')
         self.assertModeRunning('vats')
         self.assertEqual(0, self.vats_hits())
         self.assertTrue(self.machine.timers.vats_timer.running)
+        self.lit_one()
 
-    def test_each_shot_scores_once(self):
+    def test_each_crosshair_shot_counts_when_lit(self):
+        self.start_game_and_plunge()
+        for n, how in self.SHOTS.items():
+            with self.subTest(crosshair=n):
+                self.drop_all()
+                self.assertModeRunning('vats')
+                self.light_only(n)    # in place of the random pick
+                self.advance_time_and_run(.1)
+                self.assertEqual([n], self.lit())
+                self.make_shot(how)
+                self.assertEqual(1, self.vats_hits())
+                self.lit_one()                    # a new crosshair is lit
+                self.advance_time_and_run(31)     # time out, bank resets
+                self.assertModeNotRunning('vats')
+                self.advance_time_and_run(1)
+
+    def test_center_spinner_does_not_count(self):
+        self.start_game_and_plunge()
+        self.drop_all()
+        self.light_only(4)
+        self.make_shot('s_cspinner')
+        self.assertEqual(0, self.vats_hits())
+        self.assertEqual([4], self.lit())
+
+    def test_unlit_shot_does_nothing(self):
+        self.start_game_and_plunge()
+        self.drop_all()
+        n = self.lit_one()
+        other = 2 if n != 2 else 6        # a ramp that isn't lit
+        self.make_shot(self.SHOTS[other])
+        self.assertEqual(0, self.vats_hits())
+        self.assertEqual([n], self.lit())
+
+    def test_hit_scores_resets_timer_and_lights_another(self):
+        self.start_game_and_plunge()
+        self.drop_all()
+        self.advance_time_and_run(20)
+        before = self.score()
+        first = self.hit_lit()
+        self.assertEqual(before + 10000, self.score())
+        self.assertEqual(1, self.vats_hits())
+        self.assertEqual(30, self.machine.timers.vats_timer.ticks)
+        self.assertNotEqual(first, self.lit_one())
+        # the fresh 30 seconds carries it past the original deadline
+        self.advance_time_and_run(20)
+        self.assertModeRunning('vats')
+
+    def test_four_hits_complete_vats(self):
         self.start_game_and_plunge()
         self.drop_all()
         before = self.score()
-        self.hit_ramp('s_center_ramp')
-        self.assertEqual(before + 10000, self.score())
-        self.assertEqual(1, self.vats_hits())
-        # same shot again: no second VATS award
-        self.hit_ramp('s_center_ramp')
-        self.assertEqual(before + 10000, self.score())
-        self.assertEqual(1, self.vats_hits())
-
-    def test_all_four_shots_award_bonus_and_end_mode(self):
-        self.start_game_and_plunge()
-        self.drop_all()
-        before = self.score()
-        self.hit_ramp('s_left_ramp')      # base scores 1000 for this too
-        self.hit_ramp('s_center_ramp')
-        self.hit_ramp('s_right_ramp')
-        self.hit_scoop()                  # base scores 1000 for this too
+        for _ in range(3):
+            self.hit_lit()
+            self.advance_time_and_run(25)  # each hit beats its own timer
+        self.assertModeRunning('vats')
+        self.hit_lit()
         self.assertEqual(4, self.vats_hits())
-        self.assertEqual(before + 4 * 10000 + 50000 + 2 * 1000, self.score())
-        self.advance_time_and_run(2)
+        self.assertEqual(before + 4 * 10000 + 200000, self.score())
         self.assertModeNotRunning('vats')
+        self.assertEqual([], self.lit())
         # drop targets reset for the next VATS
         self.advance_time_and_run(1)
         self.assertFalse(self.bank().complete)
         self.drop_all()
         self.assertModeRunning('vats')
+        self.assertEqual(0, self.vats_hits())
 
     def test_timer_runs_out(self):
         self.start_game_and_plunge()
         self.drop_all()
-        self.advance_time_and_run(20)
+        self.hit_lit()
+        self.advance_time_and_run(29)
         self.assertModeRunning('vats')
-        self.advance_time_and_run(11)
+        self.advance_time_and_run(2)
         self.assertModeNotRunning('vats')
+        self.assertEqual([], self.lit())
         self.advance_time_and_run(1)
         self.assertFalse(self.bank().complete)
 

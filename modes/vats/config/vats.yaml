@@ -1,10 +1,11 @@
 #config_version=6
 ##! mode: vats
 #
-# V.A.T.S. - knock down all four V-A-T-S drop targets to start a 30 second
-# shot hunt. Four shots are targeted: both ramps, the center ramp and the
-# scoop. Each targeted shot scores once; hitting all four ends the mode
-# early with a completion bonus. The drop targets reset when it ends.
+# V.A.T.S. - knock down all four V-A-T-S drop targets to start a crosshair
+# hunt. One of the seven crosshair shots is lit at random, with 30 seconds
+# to hit it. A hit scores, resets the timer to 30 and lights a different
+# crosshair. Four hits complete VATS for 200,000; letting the timer run out
+# ends it. The drop targets reset when it ends either way.
 # Every drain is saved while VATS runs.
 
 mode:
@@ -31,53 +32,111 @@ timers:
         direction: down
         start_running: true
         bcp: true
+        control_events:
+            - event: vats_shots_hit     # each hit buys a fresh 30 seconds
+              action: restart
 
-# The playfield has no shot arrows, so targeted shots don't light anything
-# themselves; the display shows how many are left.
+# Only the lit (enabled) shot counts; it shows its crosshair red.
 shot_profiles:
     vats_target:
         states:
-            - name: targeted
-            - name: hit
-        loop: false
+            - name: lit
+              show: vats_crosshair
+        advance_on_hit: false
+        show_when_disabled: false
 
+# One shot per crosshair insert (see the map in config/common.yaml)
 shots:
+    vats_left_spinner:
+        switch: s_lspinner
+        profile: vats_target
+        start_enabled: false
+        enable_events: vats_light_cross1
+        show_tokens:
+            crosshair: cross1
     vats_left_ramp:
         switch: s_left_ramp
         profile: vats_target
-    vats_center_ramp:
-        switch: s_center_ramp
+        start_enabled: false
+        enable_events: vats_light_cross2
+        show_tokens:
+            crosshair: cross2
+    vats_vault_lock:
+        hit_events: balldevice_bd_lock_ball_entered
         profile: vats_target
-    vats_right_ramp:
-        switch: s_right_ramp
+        start_enabled: false
+        enable_events: vats_light_cross3
+        show_tokens:
+            crosshair: cross3
+    vats_center:
+        switch: s_center_ramp     # the center spinner doesn't count
         profile: vats_target
+        start_enabled: false
+        enable_events: vats_light_cross4
+        show_tokens:
+            crosshair: cross4
     vats_scoop:
         switch: s_scoop
         profile: vats_target
+        start_enabled: false
+        enable_events: vats_light_cross5
+        show_tokens:
+            crosshair: cross5
+    vats_right_ramp:
+        switch: s_right_ramp
+        profile: vats_target
+        start_enabled: false
+        enable_events: vats_light_cross6
+        show_tokens:
+            crosshair: cross6
+    vats_right_spinner:
+        switch: s_rspinner
+        profile: vats_target
+        start_enabled: false
+        enable_events: vats_light_cross7
+        show_tokens:
+            crosshair: cross7
 
 shot_groups:
     vats_shots:
-        shots: vats_left_ramp, vats_center_ramp, vats_right_ramp, vats_scoop
+        shots: vats_left_spinner, vats_left_ramp, vats_vault_lock, vats_center,
+            vats_scoop, vats_right_ramp, vats_right_spinner
+        disable_events: vats_shots_hit  # the hit crosshair goes out
+
+# Lights the first crosshair, then a different one after every hit
+event_player:
+    mode_vats_started: vats_pick_crosshair
+    vats_shots_hit: vats_pick_crosshair
+
+random_event_player:
+    vats_pick_crosshair:
+        events:
+            - vats_light_cross1
+            - vats_light_cross2
+            - vats_light_cross3
+            - vats_light_cross4
+            - vats_light_cross5
+            - vats_light_cross6
+            - vats_light_cross7
+        force_different: true   # never the same crosshair twice in a row
+        force_all: false
+
+counters:
+    vats_hit_count:
+        count_events: vats_shots_hit
+        count_complete_value: 4
+        events_when_complete: vats_shots_hit_complete
 
 variable_player:
     mode_vats_started:
         vats_hits:
             action: set
             int: 0
-    vats_left_ramp_targeted_hit:
-        score: 10000
-        vats_hits: 1
-    vats_center_ramp_targeted_hit:
-        score: 10000
-        vats_hits: 1
-    vats_right_ramp_targeted_hit:
-        score: 10000
-        vats_hits: 1
-    vats_scoop_targeted_hit:
+    vats_shots_hit:
         score: 10000
         vats_hits: 1
     vats_shots_hit_complete:
-        score: 50000
+        score: 200000
 
 slide_player:
     # on the second monitor; the score stays on monitor 1
@@ -107,6 +166,9 @@ show_player:
             loops: 0
 
 shows:
+    vats_crosshair:
+        - lights:
+              (crosshair): red
     # Pip-Boy green sweep across the power armor helmet while VATS runs
     vats_helmet_show:
         - duration: 100ms

@@ -42,7 +42,7 @@ offset_bottom = 380.0
 theme_override_colors/font_color = Color(0, 0.75, 0, 1)
 theme_override_fonts/font = ExtResource("3")
 theme_override_font_sizes/font_size = 40
-text = "SHOOT THE RAMPS AND THE SCOOP"
+text = "SHOOT THE LIT CROSSHAIR"
 horizontal_alignment = 1
 vertical_alignment = 1
 

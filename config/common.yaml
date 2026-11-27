@@ -170,25 +170,25 @@ lights:
         number: playfield-1-28
         tags: vats, s, inserts
     # crosshair inserts
-    cross1:
+    cross1:                 # left spinner (s_lspinner)
         number: playfield-3-1
         tags: cross1, crosshairs, inserts
-    cross2:
+    cross2:                 # left ramp (s_left_ramp)
         number: playfield-3-2
         tags: cross2, crosshairs, inserts
-    cross3:
+    cross3:                 # vault lock (bd_lock)
         number: playfield-3-3
         tags: cross3, crosshairs, inserts
-    cross4:
+    cross4:                 # center spinner and center ramp (VATS: ramp only)
         number: playfield-3-4
         tags: cross4, crosshairs, inserts
-    cross5:
+    cross5:                 # scoop (s_scoop)
         number: playfield-3-5
         tags: cross5, crosshairs, inserts
-    cross6:
+    cross6:                 # right ramp (s_right_ramp)
         number: playfield-3-6
         tags: cross6, crosshairs, inserts
-    cross7:
+    cross7:                 # right spinner (s_rspinner)
         number: playfield-3-7
         tags: cross7, crosshairs, inserts
     # rad dial inserts
