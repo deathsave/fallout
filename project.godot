@@ -26,6 +26,8 @@ window/stretch/aspect="keep"
 ; The Ubuntu cabinet (replaces old kivy_config fullscreen/borderless settings)
 window/size/mode.linuxbsd=3
 window/size/borderless.linuxbsd=true
+; display2 (VATS) lives in a real OS window on the second monitor
+window/subwindows/embed_subwindows=false
 
 [editor_plugins]
 

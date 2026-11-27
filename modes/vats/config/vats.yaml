@@ -80,7 +80,10 @@ variable_player:
         score: 50000
 
 slide_player:
-    mode_vats_started: vats_slide
+    # on the second monitor; the score stays on monitor 1
+    mode_vats_started:
+        vats_slide:
+            target: display2
 
 sound_player:
     mode_vats_started:

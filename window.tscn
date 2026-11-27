@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_window.gd" id="1"]
 [ext_resource type="PackedScene" path="res://addons/mpf-gmc/slides/startup.tscn" id="2"]
 [ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_display.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/second_monitor.gd" id="4"]
+[ext_resource type="PackedScene" path="res://slides/display2_idle.tscn" id="5"]
 
 [node name="MPFWindow" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -24,3 +26,19 @@ grow_vertical = 2
 script = ExtResource("3")
 is_default = true
 initial_slide = ExtResource("2")
+
+[node name="SecondMonitor" type="Window" parent="."]
+title = "Fallout - VATS"
+initial_position = 3
+size = Vector2i(960, 540)
+script = ExtResource("4")
+
+[node name="display2" type="Control" parent="SecondMonitor"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+initial_slide = ExtResource("5")

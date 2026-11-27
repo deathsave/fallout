@@ -5,9 +5,11 @@ displays:
       width: 1920
       height: 1080
       default: true
-#    display2:
-#      width: 1280
-#      height: 720
+    display2:
+      # second monitor (VATS). Laid out at 1920x1080 and scaled by Godot to
+      # the monitor's real resolution - see scripts/second_monitor.gd
+      width: 1920
+      height: 1080
 #    combined_display:
 #      width: 2646
 #      height: 768

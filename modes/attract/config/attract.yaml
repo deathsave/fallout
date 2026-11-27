@@ -14,3 +14,8 @@ show_player:
     mode_attract_stopping:
         attract_light_show:
             action: stop
+
+slide_player:
+    mode_attract_started:
+        display2_idle:
+            target: display2

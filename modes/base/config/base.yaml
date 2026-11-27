@@ -30,7 +30,11 @@ ball_saves:
 
 
 slide_player:
-    mode_base_started: base_slide
+    mode_base_started:
+        base_slide: {}
+        # monitor 2 idles until VATS (higher priority) takes it over
+        display2_idle:
+            target: display2
 
 light_player:
     ball_save_ball_start_ball_save_timer_start:

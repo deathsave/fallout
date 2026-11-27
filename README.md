@@ -19,6 +19,13 @@ Displays live in Godot scenes: `window.tscn`, `slides/` and `widgets/`. Sound
 buses are in `default_bus_layout.tres` + `gmc.cfg`, keyboard mappings in `gmc.cfg`.
 Open the project folder in Godot to edit slides.
 
+There are two displays. `display1` (the default) is the main monitor with the
+score. `display2` is the VATS screen on a second monitor: it lives in its own
+OS window (`SecondMonitor` in `window.tscn`, script `scripts/second_monitor.gd`)
+and goes fullscreen on the second screen on the Linux cabinet. On the dev Mac
+it opens as a normal window. Slides for it are laid out at 1920x1080 and
+targeted with `target: display2` in a `slide_player`.
+
 Running the Game
 ----------------
 
