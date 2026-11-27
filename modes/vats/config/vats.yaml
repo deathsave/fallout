@@ -1,7 +1,7 @@
 #config_version=6
 ##! mode: vats
 #
-# V.A.T.S. - knock down all three VATS drop targets to start a 30 second
+# V.A.T.S. - knock down all four V-A-T-S drop targets to start a 30 second
 # shot hunt. Four shots are targeted: both ramps, the center ramp and the
 # scoop. Each targeted shot scores once; hitting all four ends the mode
 # early with a completion bonus. The drop targets reset when it ends.

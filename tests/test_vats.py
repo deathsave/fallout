@@ -5,12 +5,12 @@ from tests.test_vault_multiball import BallHelpers
 
 class TestVats(BallHelpers):
 
-    def drop(self, number):
-        self.hit_switch_and_run('s_vats{}'.format(number), 1)
+    def drop(self, letter):
+        self.hit_switch_and_run('s_{}'.format(letter), 1)
 
     def drop_all(self):
-        for n in (1, 2, 3):
-            self.drop(n)
+        for letter in 'vats':
+            self.drop(letter)
 
     def score(self):
         return self.machine.game.player.score
@@ -30,12 +30,13 @@ class TestVats(BallHelpers):
             self.machine.ball_devices.bd_scoop)
         self.advance_time_and_run(3)
 
-    def test_all_three_drops_start_vats(self):
+    def test_all_four_drops_start_vats(self):
         self.start_game_and_plunge()
-        self.drop(1)
-        self.drop(2)
+        self.drop('v')
+        self.drop('a')
+        self.drop('t')
         self.assertModeNotRunning('vats')
-        self.drop(3)
+        self.drop('s')
         self.assertModeRunning('vats')
         self.assertEqual(0, self.vats_hits())
         self.assertTrue(self.machine.timers.vats_timer.running)

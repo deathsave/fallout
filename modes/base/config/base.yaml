@@ -6,7 +6,7 @@ mode:
 ball_saves:
     ball_start_ball_save:
         active_time: "+10s"
-        hurry_up_time: 2s
+        grace_period: "+2s"
         timer_start_events: s_shooter_lane_inactive
         auto_launch: true
         balls_to_save: 1
@@ -27,7 +27,6 @@ ball_saves:
             - ball_save_ball_start_ball_save_disabled{current_player.state_machine_med_meter_status=="med5" and not mode.vats.active}
             - mode_vats_stopped{current_player.state_machine_med_meter_status=="med5" and not device.ball_saves.ball_start_ball_save.enabled}
         disable_events: ball_will_end, service_mode_entered, mode_vats_started
-
 
 slide_player:
     mode_base_started:
@@ -51,7 +50,8 @@ light_player:
     mode_base_started:
         rads: green
         meds: off
-        caps: off
+        caps: on
+        vlock: off
         vend: off
         big_rad: off
         stims: off
@@ -146,6 +146,25 @@ variable_player:
         score: 250
     s_l_stand_active:
         score: 500
+    s_l_outlane_active:
+        score: 150
+    s_r_outlane_active:
+        score: 150
+    s_v_active:
+        score: 200
+    s_a_active:
+        score: 200
+    s_t_active:
+        score: 200
+    s_s_active:
+        score: 200
+    s_cap_right_active:
+        score: 150
+    s_cap_left_active:
+        score: 150
+    s_cap_center_active:
+        score: 150
+
 
 shots:
     rad_spin:
@@ -178,7 +197,27 @@ shots:
         switch: s_cspinner
     l_stand:
         switch: s_l_stand
+    l_stim:
+        switch: s_l_outlane
+    r_outlane:
+        switch: s_r_outlane
+    v:
+        switch: s_v
+    a:
+        switch: s_a
+    t:
+        switch: s_t
+    s:
+        switch: s_s
+    cap_left:
+        switch: s_cap_left
+    cap_center:
+        switch: s_cap_center
+    cap_right:
+        switch: s_cap_right
+
 sound_player:
+
     rad_spin_hit:
         geiger:
             action: play
@@ -265,8 +304,41 @@ sound_player:
         voicy_objective_completed:
             action: play
             bus: voice
-
-
+    v_hit:
+        vats:
+            action: play
+            bus: sfx
+            volume: 1
+    a_hit:
+        vats:
+            action: play
+            bus: sfx
+            volume: 1
+    t_hit:
+        vats:
+            action: play
+            bus: sfx
+            volume: 1
+    s_hit:
+        vats:
+            action: play
+            bus: sfx
+            volume: 1
+    s_cap_left_active:
+        cap_collect:
+            action: play
+            bus: sfx
+            volume: 1
+    s_cap_right_active:
+        cap_collect:
+            action: play
+            bus: sfx
+            volume: 1
+    s_cap_center_active:
+        cap_collect:
+            action: play
+            bus: sfx
+            volume: 1
 
 counters:
     rad_spin_counter:
@@ -295,6 +367,9 @@ counters:
         persist_state: true
         reset_on_complete: true
         disable_on_complete: false
+
+#    caps_counter:
+
 
 multiballs:
     vault_multiball:
