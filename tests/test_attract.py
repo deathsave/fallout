@@ -10,11 +10,11 @@ class TestAttractLightShow(FalloutMachineTestCase):
 
     def test_show_plays_and_loops(self):
         self.assertModeRunning('attract')
-        # sample every light over one full loop (~13.8s) and make sure each
+        # sample every light over one full loop (~15.4s) and make sure each
         # one the show drives actually changes
         lights = list(self.machine.lights.keys())
         seen = {name: set() for name in lights}
-        for _ in range(150):
+        for _ in range(160):
             self.advance_time_and_run(.1)
             for name in lights:
                 seen[name].add(self.color(name))

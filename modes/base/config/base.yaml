@@ -58,6 +58,8 @@ light_player:
         helmet: ffff00
         vault_boy: off
         slings: yellow
+        vats: off
+        crosshairs: off
 
     rads_level1:
         rad1: red
@@ -158,12 +160,12 @@ variable_player:
         score: 200
     s_s_active:
         score: 200
-    s_cap_right_active:
-        score: 150
-    s_cap_left_active:
-        score: 150
-    s_cap_center_active:
-        score: 150
+    s_3b1_active:
+        score: 300
+    s_3b2_active:
+        score: 300
+    s_3b3_active:
+        score: 300
 
 
 shots:
@@ -209,12 +211,23 @@ shots:
         switch: s_t
     s:
         switch: s_s
+    # caps are collected on the spinners
     cap_left:
-        switch: s_cap_left
+        switch: s_lspinner
     cap_center:
-        switch: s_cap_center
+        switch: s_cspinner
     cap_right:
-        switch: s_cap_right
+        switch: s_rspinner
+    3b1:
+        switch: s_3b1
+    3b2:
+        switch: s_3b2
+    3b3:
+        switch: s_3b3
+    left_inlane:
+        switch: s_left_cap
+    right_inlane:
+        switch: s_right_cap
 
 sound_player:
 
@@ -321,21 +334,6 @@ sound_player:
             volume: 1
     s_hit:
         vats:
-            action: play
-            bus: sfx
-            volume: 1
-    s_cap_left_active:
-        cap_collect:
-            action: play
-            bus: sfx
-            volume: 1
-    s_cap_right_active:
-        cap_collect:
-            action: play
-            bus: sfx
-            volume: 1
-    s_cap_center_active:
-        cap_collect:
             action: play
             bus: sfx
             volume: 1

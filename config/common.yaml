@@ -156,6 +156,75 @@ lights:
     power9:
         number: neuron-1-9
         tags: helmet
+    # V-A-T-S inserts
+    v:
+        number: playfield-1-25
+        tags: vats, v, inserts
+    a:
+        number: playfield-1-26
+        tags: vats, a, inserts
+    t:
+        number: playfield-1-27
+        tags: vats, t, inserts
+    s:
+        number: playfield-1-28
+        tags: vats, s, inserts
+    # crosshair inserts
+    cross1:
+        number: playfield-3-1
+        tags: cross1, crosshairs, inserts
+    cross2:
+        number: playfield-3-2
+        tags: cross2, crosshairs, inserts
+    cross3:
+        number: playfield-3-3
+        tags: cross3, crosshairs, inserts
+    cross4:
+        number: playfield-3-4
+        tags: cross4, crosshairs, inserts
+    cross5:
+        number: playfield-3-5
+        tags: cross5, crosshairs, inserts
+    cross6:
+        number: playfield-3-6
+        tags: cross6, crosshairs, inserts
+    cross7:
+        number: playfield-3-7
+        tags: cross7, crosshairs, inserts
+    # rad dial inserts
+    r_dial1:
+        number: playfield-4-1
+        tags: inserts, r_dial1, r_dial
+    r_dial2:
+        number: playfield-4-2
+        tags: inserts, r_dial2, r_dial
+    r_dial3:
+        number: playfield-4-3
+        tags: inserts, r_dial3, r_dial
+    r_dial4:
+        number: playfield-4-4
+        tags: inserts, r_dial4, r_dial
+    r_dial5:
+        number: playfield-4-5
+        tags: inserts, r_dial5, r_dial
+    r_dial6:
+        number: playfield-4-6
+        tags: inserts, r_dial6, r_dial
+    r_dial7:
+        number: playfield-4-7
+        tags: inserts, r_dial7, r_dial
+    r_dial8:
+        number: playfield-4-8
+        tags: inserts, r_dial8, r_dial
+    r_dial9:
+        number: playfield-4-9
+        tags: inserts, r_dial9, r_dial
+    r_dial10:
+        number: playfield-4-10
+        tags: inserts, r_dial10, r_dial
+    r_dial11:
+        number: playfield-4-11
+        tags: inserts, r_dial11, r_dial
 
 
 light_player:
@@ -173,6 +242,9 @@ light_player:
         helmet: ffff00
         vault_boy: 00D5FF
         slings: yellow
+        vats: white
+        crosshairs: white
+        r_dial: red
 
 switches:
     s_left_flipper:
@@ -203,13 +275,14 @@ switches:
         number: 3208-2
         tags: start
     s_r_outlane:
-        number: 3208-21
-    s_l_outlane:
         number: 3208-20
-#    s_left_in_cap:
-#        number: 3208-16
-#    s_right_in_cap:
-#        number: 3208-19
+    s_l_outlane:
+        number: 3208-19
+    # inlanes
+    s_left_cap:
+        number: 3208-21
+    s_right_cap:
+        number: 3208-16
     s_left_sling:
         number: 3208-8
     s_right_sling:
@@ -252,23 +325,22 @@ switches:
     s_lock3:
         number: 0804-6
         type: 'NC'
-    s_cap_left:
-        number: 3208-16
-        tags: caps
-    s_cap_center:
-        number: 3208-18
-        tags: caps
-    s_cap_right:
-        number: 3208-17
-        tags: caps 
+    # caps are collected on the spinners (see shots in modes/base)
     s_v:
-        number: 3208-28
-    s_a:
-        number: 3208-29
-    s_t:
-        number: 3208-30
-    s_s:
         number: 3208-31
+    s_a:
+        number: 3208-30
+    s_t:
+        number: 3208-29
+    s_s:
+        number: 3208-28
+    # 3-bank drop targets
+    s_3b1:
+        number: 3208-4
+    s_3b2:
+        number: 3208-5
+    s_3b3:
+        number: 3208-6
 spinners:
     basic_spinner:
        switch: s_rspinner, s_lspinner, s_cspinner
@@ -359,12 +431,24 @@ drop_targets:
     s:
         switch: s_s
 
+    3b1:
+        switch: s_3b1
+    3b2:
+        switch: s_3b2
+    3b3:
+        switch: s_3b3
+
 drop_target_banks:
     vats:
         drop_targets: v, a, t, s
         reset_coils: c_vats
         # back up for each ball and when the VATS mode ends
         reset_events: machine_reset_phase_3, ball_starting, mode_vats_stopped
+    3bank:
+        drop_targets: 3b1, 3b2, 3b3
+        reset_coils: c_3bank
+        reset_on_complete: 500ms
+        reset_events: machine_reset_phase_3, ball_starting
 
 counters:
     mb_counter:

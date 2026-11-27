@@ -23,10 +23,14 @@ HELMET = ["power1", "powers", "power3", "power4", "power5", "power6", "power7", 
 LEFT_SLINGS = ["sling_left_top", "sling_left_bottom"]
 RIGHT_SLINGS = ["sling_right_top", "sling_right_bottom"]
 VLOCK = ["vlock1", "vlock2", "vlock3"]
+VATS = ["v", "a", "t", "s"]
+CROSS = [f"cross{i}" for i in range(1, 8)]
+R_DIAL = [f"r_dial{i}" for i in range(1, 12)]
 
 # every light the show drives, used to blank the playfield between segments
 ALL = (RADS + ["big_rad"] + CAPS + MEDS + VLOCK + ["vend1", "vedn2", "vault_boy",
-       "shoot_again", "stim_left", "stim_right"] + HELMET + LEFT_SLINGS + RIGHT_SLINGS)
+       "shoot_again", "stim_left", "stim_right"] + HELMET + LEFT_SLINGS + RIGHT_SLINGS
+       + VATS + CROSS + R_DIAL)
 
 steps = []  # (comment, duration_ms, {light: color})
 
@@ -81,20 +85,34 @@ for n in range(4):
          "slings fire left / right" if n == 0 else None)
     step(200, {**{s: OFF for s in LEFT_SLINGS}, **{s: ORANGE for s in RIGHT_SLINGS}})
 
-# --- 5. Nuke: everything flashes white, then a colour wave -----------------
+# --- 5. V.A.T.S.: crosshairs lock on, V-A-T-S spells out, rad dial swings -
+lit = blank()
+for i, name in enumerate(CROSS):
+    step(60, {**lit, **{c: (RED if c == name else OFF) for c in CROSS}},
+         "V.A.T.S.: crosshairs lock on" if i == 0 else None)
+step(120, {c: WHITE for c in CROSS})
+for i, name in enumerate(VATS):
+    lit[name] = GREEN
+    step(150, {**lit, **{c: WHITE for c in CROSS}}, "V-A-T-S spells out" if i == 0 else None)
+for i, name in enumerate(R_DIAL):
+    step(40, {r: (RED if j <= i else OFF) for j, r in enumerate(R_DIAL)},
+         "rad dial swings up" if i == 0 else None)
+
+# --- 6. Nuke: everything flashes white, then a colour wave -----------------
 for n in range(4):
     step(120, {name: WHITE for name in ALL}, "Nuke: full playfield flash" if n == 0 else None)
     step(120, blank())
 for n, color in enumerate([RED, AMBER, YELLOW, GREEN]):
     step(400, {name: color for name in ALL}, "fallout colour wave" if n == 0 else None)
 
-# --- 6. Rest: the normal attract colours for a moment ----------------------
+# --- 7. Rest: the normal attract colours for a moment ----------------------
 step(3000, {**{r: RAD_RED for r in RADS}, **{c: WHITE for c in CAPS},
             "shoot_again": GREEN, **{m: PURPLE for m in MEDS}, "big_rad": RED,
             "stim_left": RAD_RED, "stim_right": RAD_RED, "vend1": VEND, "vedn2": VEND,
             "vlock1": RED, "vlock2": YELLOW, "vlock3": GREEN,
             **{h: YELLOW for h in HELMET}, "vault_boy": BLUE,
-            **{s: YELLOW for s in LEFT_SLINGS + RIGHT_SLINGS}},
+            **{s: YELLOW for s in LEFT_SLINGS + RIGHT_SLINGS},
+            **{v: WHITE for v in VATS}, **{c: WHITE for c in CROSS}, **{r: RED for r in R_DIAL}},
      "Rest: steady attract colours")
 
 total = sum(ms for _, ms, _ in steps)
