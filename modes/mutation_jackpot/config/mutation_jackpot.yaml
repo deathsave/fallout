@@ -17,6 +17,13 @@ light_player:
         cross4: red             # center ramp
         cross6: red             # right ramp
 
+# The live jackpot on display 1 too (monitor 2's slide has its own). The
+# widget belongs to this mode, so it goes when the multiball ends.
+widget_player:
+    mode_mutation_jackpot_started:
+        mutation_jackpot:
+            slide: base_slide
+
 # A ramp hit collects, then the jackpot resets. Posted in that order, so the
 # score is added before the value goes back to 0.
 event_player:
