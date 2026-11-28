@@ -24,6 +24,18 @@ event_player:
     center_ramp_hit: mutation_jackpot_collect, mutation_jackpot_reset
     right_ramp_hit: mutation_jackpot_collect, mutation_jackpot_reset
 
+# Fallout game stings: quest start when the jackpot lights, objective
+# completed when it is collected
+sound_player:
+    mode_mutation_jackpot_started:
+        quest_start:
+            action: play
+            bus: sfx
+    mutation_jackpot_collect:
+        voicy_objective_completed:
+            action: play
+            bus: sfx
+
 variable_player:
     mode_mutation_jackpot_started:
         mutation_jackpot:
