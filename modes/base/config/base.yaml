@@ -34,6 +34,22 @@ slide_player:
         # monitor 2 idles until VATS (higher priority) takes it over
         display2_idle:
             target: display2
+    # Fallout clips on monitor 2 while rads multiball runs (VATS, a higher
+    # priority mode, still takes the monitor over if it starts meanwhile)
+    multiball_rads_multiball_started:
+        rads_multiball_clips:
+            target: display2
+    multiball_rads_vault_multiball_started:
+        rads_multiball_clips:
+            target: display2
+    multiball_rads_multiball_ended:
+        rads_multiball_clips:
+            action: remove
+            target: display2
+    multiball_rads_vault_multiball_ended:
+        rads_multiball_clips:
+            action: remove
+            target: display2
 
 light_player:
     ball_save_ball_start_ball_save_timer_start:
