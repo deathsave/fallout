@@ -42,7 +42,7 @@ class TestMutationJackpot(test_mutation_multiball.TestMutationMultiball):
         self.start_mutation_multiball()
         self.assertEqual(0, self.jackpot())
         self.spin(5)
-        self.assertEqual(5000, self.jackpot())
+        self.assertEqual(25000, self.jackpot())
 
     def test_each_ramp_collects(self):
         self.start_mutation_multiball()
@@ -52,7 +52,7 @@ class TestMutationJackpot(test_mutation_multiball.TestMutationMultiball):
             self.hit_and_release_switch(ramp)
             self.advance_time_and_run(.1)
             gained = self.machine.game.player.score - score
-            self.assertGreaterEqual(gained, 3000, ramp)
+            self.assertGreaterEqual(gained, 15000, ramp)
             self.assertEqual(0, self.jackpot(), "jackpot resets after " + ramp)
         self.assertEqual(3, self.machine.game.player.mutation_jackpots_collected)
 

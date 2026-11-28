@@ -2,7 +2,7 @@
 ##! mode: mutation_jackpot
 #
 # Mutation jackpot - runs for as long as mutation multiball does. Every spin of the
-# right (rad) spinner adds 1,000 to the jackpot; any ramp (left, center or
+# right (rad) spinner adds 5,000 to the jackpot; any ramp (left, center or
 # right) collects it and starts it again from 0. The three ramp crosshairs
 # are lit red to show the jackpot shots.
 
@@ -42,7 +42,7 @@ variable_player:
             action: set
             int: 0
     s_rspinner_active:
-        mutation_jackpot: 1000
+        mutation_jackpot: 5000
     mutation_jackpot_collect:
         score:
             int: current_player.mutation_jackpot
