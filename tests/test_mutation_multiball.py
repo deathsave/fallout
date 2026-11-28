@@ -1,9 +1,9 @@
-"""Tests the rad meter and the rads multiball."""
+"""Tests the rad meter and the mutation multiball."""
 
 from tests.test_vault_multiball import BallHelpers
 
 
-class TestRadsMultiball(BallHelpers):
+class TestMutationMultiball(BallHelpers):
 
     def rad_meter(self):
         return self.machine.state_machines.rad_meter_status.state
@@ -28,7 +28,7 @@ class TestRadsMultiball(BallHelpers):
             self.advance_time_and_run(.1)
         self.assertEqual('rads1', self.rad_meter())
 
-    def test_full_meter_starts_rads_multiball(self):
+    def test_full_meter_starts_mutation_multiball(self):
         self.start_game_and_plunge()
         self.fill_rad_meter()
         self.assertEqual('rads0', self.rad_meter(), "meter resets")
@@ -36,14 +36,14 @@ class TestRadsMultiball(BallHelpers):
         self.assertEqual(0, self.machine.ball_devices.bd_lock.balls)
         self.assertFalse(self.machine.multiball_locks.v_lock.enabled)
 
-    def test_rads_multiball_uses_trough_before_vault(self):
+    def test_mutation_multiball_uses_trough_before_vault(self):
         self.start_game_and_plunge()
         self.lock_ball()            # vault 1, trough 1
         self.fill_rad_meter()
         self.assertMultiballWithThreeBalls()
         self.assertEqual(0, self.machine.ball_devices.bd_lock.balls)
 
-    def test_rads_multiball_releases_vault_when_trough_empty(self):
+    def test_mutation_multiball_releases_vault_when_trough_empty(self):
         self.start_game_and_plunge()
         self.lock_ball()
         self.lock_ball()            # vault 2, trough 0
@@ -53,7 +53,7 @@ class TestRadsMultiball(BallHelpers):
         self.assertEqual(0, self.machine.ball_devices.bd_lock.balls)
         self.assertEqual(0, self.machine.multiball_locks.v_lock.locked_balls)
 
-    def test_vault_lock_back_on_after_rads_multiball(self):
+    def test_vault_lock_back_on_after_mutation_multiball(self):
         self.start_game_and_plunge()
         self.fill_rad_meter()
         self.assertMultiballWithThreeBalls()

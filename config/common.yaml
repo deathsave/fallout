@@ -534,6 +534,7 @@ player_vars:
 modes:
     - base
     - vats
+    - mutation_jackpot
 #    - bonus
     - high_score
     - attract

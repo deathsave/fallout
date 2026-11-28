@@ -34,20 +34,20 @@ slide_player:
         # monitor 2 idles until VATS (higher priority) takes it over
         display2_idle:
             target: display2
-    # Fallout clips on monitor 2 while rads multiball runs (VATS, a higher
+    # Fallout clips on monitor 2 while mutation multiball runs (VATS, a higher
     # priority mode, still takes the monitor over if it starts meanwhile)
-    multiball_rads_multiball_started:
-        rads_multiball_clips:
+    multiball_mutation_multiball_started:
+        mutation_multiball_clips:
             target: display2
-    multiball_rads_vault_multiball_started:
-        rads_multiball_clips:
+    multiball_mutation_vault_multiball_started:
+        mutation_multiball_clips:
             target: display2
-    multiball_rads_multiball_ended:
-        rads_multiball_clips:
+    multiball_mutation_multiball_ended:
+        mutation_multiball_clips:
             action: remove
             target: display2
-    multiball_rads_vault_multiball_ended:
-        rads_multiball_clips:
+    multiball_mutation_vault_multiball_ended:
+        mutation_multiball_clips:
             action: remove
             target: display2
 
@@ -135,23 +135,23 @@ light_player:
         vlock2: ffff00
     multiball_vault_multiball_ended:
         vlock: off
-    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls==0}:
+    multiball_mutation_multiball_ended{device.ball_devices.bd_lock.balls==0}:
         vlock: off
-    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls==1}:
+    multiball_mutation_multiball_ended{device.ball_devices.bd_lock.balls==1}:
         vlock1: red
         vlock2: off
         vlock3: off
-    multiball_rads_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
+    multiball_mutation_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
         vlock1: red
         vlock2: ffff00
         vlock3: off
-    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls==0}:
+    multiball_mutation_vault_multiball_ended{device.ball_devices.bd_lock.balls==0}:
         vlock: off
-    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls==1}:
+    multiball_mutation_vault_multiball_ended{device.ball_devices.bd_lock.balls==1}:
         vlock1: red
         vlock2: off
         vlock3: off
-    multiball_rads_vault_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
+    multiball_mutation_vault_multiball_ended{device.ball_devices.bd_lock.balls>=2}:
         vlock1: red
         vlock2: ffff00
         vlock3: off
@@ -167,6 +167,12 @@ variable_player:
         vats_letter_v:
             action: set
             string: ""
+    # The display only shows player variables that already exist, so the
+    # mutation jackpot (mutation_jackpot mode) starts at 0 with every ball
+    mode_base_started:
+        mutation_jackpot:
+            action: set
+            int: 0
     drop_target_a_down:
         vats_letter_a:
             action: set
@@ -447,15 +453,15 @@ multiballs:
         replace_balls_in_play: true
         start_events: multiball_lock_v_lock_full
 
-    # Rads multiball: 3 balls when the rad meter fills. Served from the
+    # Mutation multiball: 3 balls when the rad meter fills. Served from the
     # trough; only if the trough is short are balls taken from the vault
     # (MPF always empties ball_locks first, hence the two variants).
-    rads_multiball:
+    mutation_multiball:
         ball_count: 3
         ball_count_type: total
         shoot_again: 10s
         start_events: rad_meter_full{device.ball_devices.bd_trough.balls>=2}
-    rads_vault_multiball:
+    mutation_vault_multiball:
         ball_count: 3
         ball_count_type: total
         shoot_again: 10s
@@ -474,8 +480,8 @@ multiball_locks:
         balls_to_replace: 2
         # Off during the multiball (balls entering the vault are kicked
         # back out), back on for the next one.
-        enable_events: mode_base_started, multiball_vault_multiball_ended, multiball_rads_multiball_ended, multiball_rads_vault_multiball_ended
-        disable_events: multiball_lock_v_lock_full, multiball_rads_multiball_started, multiball_rads_vault_multiball_started
+        enable_events: mode_base_started, multiball_vault_multiball_ended, multiball_mutation_multiball_ended, multiball_mutation_vault_multiball_ended
+        disable_events: multiball_lock_v_lock_full, multiball_mutation_multiball_started, multiball_mutation_vault_multiball_started
 
 state_machines:
     rad_meter_status:
@@ -562,7 +568,7 @@ state_machines:
               events: logicblock_rad_spin_sequence_complete
             - source: rads10
               target: rads0
-              events: reset_rad_meter, multiball_rads_multiball_started, multiball_rads_vault_multiball_started
+              events: reset_rad_meter, multiball_mutation_multiball_started, multiball_mutation_vault_multiball_started
     med_meter_status:
         persist_state: true #so this will hold state across balls
         starting_state: med0
@@ -789,7 +795,7 @@ shows:
               helmet:
                   color: ffff00
                   fade: 20ms
-    rads_multiball_show:
+    mutation_multiball_show:
         - duration: 80ms
           lights:
               rads1: red
@@ -957,21 +963,21 @@ shows:
 
 
 show_player:
-    multiball_rads_multiball_started:
-        rads_multiball_show:
+    multiball_mutation_multiball_started:
+        mutation_multiball_show:
             action: play
             loops: -1
             priority: 10
-    multiball_rads_multiball_ended:
-        rads_multiball_show:
+    multiball_mutation_multiball_ended:
+        mutation_multiball_show:
             action: stop
-    multiball_rads_vault_multiball_started:
-        rads_multiball_show:
+    multiball_mutation_vault_multiball_started:
+        mutation_multiball_show:
             action: play
             loops: -1
             priority: 10
-    multiball_rads_vault_multiball_ended:
-        rads_multiball_show:
+    multiball_mutation_vault_multiball_ended:
+        mutation_multiball_show:
             action: stop
     multiball_vault_multiball_started:
         vault_multiball_show:

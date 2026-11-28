@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Converts video clips to the Ogg Theora (.ogv) Godot plays, scaled to
-# 1920x1080 (letterboxed), into videos/rads_multiball/.
+# 1920x1080 (letterboxed), into videos/mutation_multiball/.
 #
 #   tools/convert_clips.sh clip1.mp4 clip2.mkv ...
 #   tools/convert_clips.sh -t 8 clip.mp4      # keep only the first 8 seconds
@@ -10,7 +10,7 @@
 #       recording's pixels) - e.g. just the Vault Boy from a Pip-Boy capture
 set -euo pipefail
 
-out_dir="$(cd "$(dirname "$0")/.." && pwd)/videos/rads_multiball"
+out_dir="$(cd "$(dirname "$0")/.." && pwd)/videos/mutation_multiball"
 start="" dur="" crop=""
 while getopts "s:t:c:" opt; do
     case $opt in
@@ -41,5 +41,5 @@ for f in "$@"; do
         -vf "${crop}scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,fps=30" \
         -c:v libtheora -q:v 7 -c:a libvorbis -q:a 4 -ac 2 -ar 44100 \
         "$out_dir/$name.ogv"
-    echo "wrote videos/rads_multiball/$name.ogv"
+    echo "wrote videos/mutation_multiball/$name.ogv"
 done

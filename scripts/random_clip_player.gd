@@ -6,7 +6,7 @@ extends VideoStreamPlayer
 ## and a green radiation pulse.
 
 ## Folder holding the clips.
-@export_dir var clip_dir: String = "res://videos/rads_multiball"
+@export_dir var clip_dir: String = "res://videos/mutation_multiball"
 ## How long a still image stays up before the next clip.
 @export var image_seconds: float = 6.0
 

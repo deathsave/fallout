@@ -1,0 +1,41 @@
+#config_version=6
+##! mode: mutation_jackpot
+#
+# Mutation jackpot - runs for as long as mutation multiball does. Every spin of the
+# right (rad) spinner adds 1,000 to the jackpot; any ramp (left, center or
+# right) collects it and starts it again from 0. The three ramp crosshairs
+# are lit red to show the jackpot shots.
+
+mode:
+    start_events: multiball_mutation_multiball_started, multiball_mutation_vault_multiball_started
+    stop_events: multiball_mutation_multiball_ended, multiball_mutation_vault_multiball_ended
+    priority: 150
+
+light_player:
+    mode_mutation_jackpot_started:
+        cross2: red             # left ramp
+        cross4: red             # center ramp
+        cross6: red             # right ramp
+
+# A ramp hit collects, then the jackpot resets. Posted in that order, so the
+# score is added before the value goes back to 0.
+event_player:
+    left_ramp_hit: mutation_jackpot_collect, mutation_jackpot_reset
+    center_ramp_hit: mutation_jackpot_collect, mutation_jackpot_reset
+    right_ramp_hit: mutation_jackpot_collect, mutation_jackpot_reset
+
+variable_player:
+    mode_mutation_jackpot_started:
+        mutation_jackpot:
+            action: set
+            int: 0
+    s_rspinner_active:
+        mutation_jackpot: 1000
+    mutation_jackpot_collect:
+        score:
+            int: current_player.mutation_jackpot
+        mutation_jackpots_collected: 1
+    mutation_jackpot_reset:
+        mutation_jackpot:
+            action: set
+            int: 0
